@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Recruitment</title>
+    <link rel="stylesheet" href="csss/home.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Your Logo</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Serviços</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.php"><button>Login</button></a>
+            <a href="cadastro.php"><button>Cadastro</button></a>
+        </div>
+    </header>
+    <main>
+        <section class="intro">
+            <h1>Bem-vindo à WiseWallet</h1>
+            <p>Somos líderes em soluções tecnológicas inovadoras.</p>
+        </section>
+        <section class="carousel">
+            <div class="carousel-slide">
+                <img src="img/Empreendedorismo.jpg" alt="Imagem 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="imagem2.jpg" alt="Imagem 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="imagem3.jpg" alt="Imagem 3">
+            </div>
+        </section>
+        <button id="prevBtn">&lt;</button>
+        <button id="nextBtn">&gt;</button>
+        <section class="services">
+            <h2>Nossos Serviços Premium</h2>
+            <div class="service-card">
+                <h3>Serviço 1</h3>
+                <p>Descrição do serviço 1.</p>
+            </div>
+            <div class="service-card">
+                <h3>Serviço 2</h3>
+                <p>Descrição do serviço 2.</p>
+            </div>
+            <div class="service-card">
+                <h3>Serviço 3</h3>
+                <p>Descrição do serviço 3.</p>
+            </div>
+        </section>
+        <div>
+            <script>
+                // Crie um novo gráfico usando Chart.js
+                const ctx = document.getElementById('stockChart').getContext('2d');
+                const stockChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [], // Use rótulos de tempo
+                        datasets: [{
+                            label: 'Preço da Ação',
+                            data: [], // Use dados de preço
+                            borderColor: 'blue',
+                            borderWidth: 1,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                type: 'realtime',
+                                realtime: {
+                                    duration: 20000, // Exibir os últimos 20 segundos
+                                    refresh: 1000, // Atualizar a cada 1 segundo
+                                    delay: 2000, // Adicionar um atraso de 2 segundos
+                                    onRefresh: (chart) => { // Callback para atualizar os dados
+                                        // Atualize os dados do gráfico aqui
+                                        const newData = /* Obter dados atualizados da API */
+                                        chart.data.datasets[0].data.push(newData);
+                                        chart.data.labels.push(new Date().toLocaleTimeString());
+                                        chart.update();
+                                    }
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Preço'
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Inovatech. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+            });
+
+            if (n < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (n >= totalSlides) {
+                currentSlide = 0;
+            }
+
+            slides[currentSlide].style.display = 'block';
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            showSlide(currentSlide);
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', nextSlide);
+        document.getElementById('prevBtn').addEventListener('click', prevSlide);
+
+        showSlide(currentSlide);
+    </script>
+</body>
+
+</html>
