@@ -9,6 +9,7 @@
 <body>
 
 <section class="services">
+<h2>Nossos Serviços Premium</h2>
 <?php
         $servername = "localhost";
         $username = "root";
@@ -25,11 +26,11 @@
 
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                echo '<h2>Nossos Serviços Premium</h2>';
+                
                 echo '<div class="service-card">';
                 echo '<h3>' . $row["nome"] . '</h3>';
                 echo '<p>' . $row["descricao"] . '</p>';
-                echo '<span class="valor">' . $row["valor"] . '</span>';
+                
                 echo '<a href="' . $row["link"] . '" class="btn">Comprar por R$ ' . $row["valor"] . '</a>';  
                 echo '</div>';
             }            

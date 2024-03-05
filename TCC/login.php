@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Senha correta, login bem-sucedido
             echo "Login bem-sucedido!";
             // Você pode redirecionar o usuário para outra página aqui
-            header("Location: aaa.html");
+            header("Location: aaa.php");
             exit;
         } else {
             // Senha incorreta
