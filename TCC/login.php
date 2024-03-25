@@ -87,6 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="password" name="senha" placeholder="Digite a sua senha">
                     </div>
                     <button type="submit" class="btn-login">LOGIN</button>
+                    <br><br>
+                    <p>Não possui conta, realize o cadastro  <a href="cadastro.php">aqui</a></p>
                     <?php if ($login_failed): ?>
                         <p style="color: red; font-size: 14px; margin-top: 5px;">Usuário ou senha incorretos!</p>
                     <?php endif; ?>

@@ -1,66 +1,132 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-header {
-    background-color: #004d8b;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+.navbar {
+    background-color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+    display: inline-block;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.logo img {
+    width: 150px;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.auth-buttons {
+.nav-links {
+    list-style: none;
+    display: inline-block;
     margin-left: auto;
 }
 
-.auth-buttons a {
+.nav-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.nav-links li a {
     text-decoration: none;
+    color: #333;
 }
 
-.auth-buttons button {
-    background-color: #ffd700;
-    color: #004d8b;
+.btn {
+    padding: 10px 20px;
     border: none;
-    padding: 8px 15px;
     border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
     cursor: pointer;
-    font-weight: bold;
-    margin-left: 10px;
 }
 
-main {
+.btn-signup {
+    background-color: #FF652F;
+}
+
+.btn-get-started {
+    background-color: #0080FF;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #0080FF;
+    color: #fff;
+    padding: 100px 0;
     text-align: center;
-    padding: 50px;
 }
 
-.intro {
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Benefits Section */
+.benefits {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.benefits h2 {
+    font-size: 2.5rem;
     margin-bottom: 50px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.benefit {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.benefit img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.benefit h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.benefit p {
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
 }
 
 .services {
@@ -100,49 +166,3 @@ main {
 .btn:hover {
     background-color: #0056b3;
 }
-
-
-footer {
-    background-color: #004d8b;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-}
-
-.carousel {
-    width: 80%;
-    margin: 0 auto;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .carousel-slide {
-    display: none;
-  }
-  
-  .carousel-slide img {
-    max-width: 100%;
-    height: auto;
-}
-  
-  #prevBtn, #nextBtn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 2;
-  }
-  
-  #prevBtn {
-    left: 0;
-  }
-  
-  #nextBtn {
-    right: 0;
-  }
-  

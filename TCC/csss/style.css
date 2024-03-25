@@ -6,10 +6,13 @@
 body {
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
+    color: white;
+
 }
 
 body * {
     box-sizing: border-box;
+    color: white;
 }
 
 .main-login {
@@ -148,4 +151,8 @@ body * {
     color: red;
     font-size: 14px;
     margin-top: 5px;
+}
+
+.button{
+    color: aliceblue;
 }

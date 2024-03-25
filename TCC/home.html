@@ -8,142 +8,57 @@
     <link rel="stylesheet" href="csss/home.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
-    <header>
-        <div class="logo">Your Logo</div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <a href="login.php"><button>Login</button></a>
-            <a href="cadastro.php"><button>Cadastro</button></a>
-        </div>
-    </header>
-    <main>
-        <section class="intro">
-            <h1>Bem-vindo à WiseWallet</h1>
-            <p>Somos líderes em soluções tecnológicas inovadoras.</p>
-        </section>
-        <section class="carousel">
-            <div class="carousel-slide">
-                <img src="img/Empreendedorismo.jpg" alt="Imagem 1">
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="container">
+                    <a href="#" class="logo"><img src="logo.png" alt="Financial Growth"></a>
+                    <ul class="nav-links">
+                        <li><a href="#">Why Us</a></li>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="login.php" class="btn btn-signup">Sign Up</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="hero">
+                <div class="container">
+                    <h1>Accelerate Your Financial Growth</h1>
+                    <p>Join thousands of users who have achieved their financial goals with our platform.</p>
+                    <a href="#" class="btn btn-get-started">Get Started</a>
+                </div>
             </div>
-            <div class="carousel-slide">
-                <img src="imagem2.jpg" alt="Imagem 2">
-            </div>
-            <div class="carousel-slide">
-                <img src="imagem3.jpg" alt="Imagem 3">
-            </div>
-        </section>
-        <button id="prevBtn">&lt;</button>
-        <button id="nextBtn">&gt;</button>
-        <section class="services">
-            <h2>Nossos Serviços Premium</h2>
-            <div class="service-card">
-                <h3>Serviço 1</h3>
-                <p>Descrição do serviço 1.</p>
-            </div>
-            <div class="service-card">
-                <h3>Serviço 2</h3>
-                <p>Descrição do serviço 2.</p>
-            </div>
-            <div class="service-card">
-                <h3>Serviço 3</h3>
-                <p>Descrição do serviço 3.</p>
+        </header>
+    
+        <section class="benefits">
+            <div class="container">
+                <h2>Benefits of Financial Growth</h2>
+                <div class="benefits-grid">
+                    <div class="benefit">
+                        <img src="benefit1.png" alt="Benefit 1">
+                        <h3>Track Expenses</h3>
+                        <p>Easily monitor your spending habits and identify areas for improvement.</p>
+                    </div>
+                    <div class="benefit">
+                        <img src="benefit2.png" alt="Benefit 2">
+                        <h3>Budget Planning</h3>
+                        <p>Create personalized budgets and stay on track towards your financial objectives.</p>
+                    </div>
+                    <div class="benefit">
+                        <img src="benefit3.png" alt="Benefit 3">
+                        <h3>Investment Management</h3>
+                        <p>Optimize your investments with insightful analytics and real-time updates.</p>
+                    </div>
+                </div>
             </div>
         </section>
-        <div>
-            <script>
-                // Crie um novo gráfico usando Chart.js
-                const ctx = document.getElementById('stockChart').getContext('2d');
-                const stockChart = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: [], // Use rótulos de tempo
-                        datasets: [{
-                            label: 'Preço da Ação',
-                            data: [], // Use dados de preço
-                            borderColor: 'blue',
-                            borderWidth: 1,
-                            fill: false
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                type: 'realtime',
-                                realtime: {
-                                    duration: 20000, // Exibir os últimos 20 segundos
-                                    refresh: 1000, // Atualizar a cada 1 segundo
-                                    delay: 2000, // Adicionar um atraso de 2 segundos
-                                    onRefresh: (chart) => { // Callback para atualizar os dados
-                                        // Atualize os dados do gráfico aqui
-                                        const newData = /* Obter dados atualizados da API */
-                                        chart.data.datasets[0].data.push(newData);
-                                        chart.data.labels.push(new Date().toLocaleTimeString());
-                                        chart.update();
-                                    }
-                                }
-                            },
-                            y: {
-                                title: {
-                                    display: true,
-                                    text: 'Preço'
-                                }
-                            }
-                        }
-                    }
-                });
-            </script>
-
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 Inovatech. Todos os direitos reservados.</p>
-    </footer>
-
-    <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const totalSlides = slides.length;
-
-        function showSlide(n) {
-            slides.forEach(slide => {
-                slide.style.display = 'none';
-            });
-
-            if (n < 0) {
-                currentSlide = totalSlides - 1;
-            } else if (n >= totalSlides) {
-                currentSlide = 0;
-            }
-
-            slides[currentSlide].style.display = 'block';
-        }
-
-        function nextSlide() {
-            currentSlide++;
-            showSlide(currentSlide);
-        }
-
-        function prevSlide() {
-            currentSlide--;
-            showSlide(currentSlide);
-        }
-
-        document.getElementById('nextBtn').addEventListener('click', nextSlide);
-        document.getElementById('prevBtn').addEventListener('click', prevSlide);
-
-        showSlide(currentSlide);
-    </script>
-</body>
+    
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Financial Growth. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
 
 </html>
