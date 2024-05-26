@@ -1,8 +1,8 @@
 <?php
 // Verificar se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-     // Conectar ao banco de dados (substitua essas informações com as suas)
-   $servername = "localhost";
+    // Conectar ao banco de dados (substitua essas informações com as suas)
+    $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "tcc";
@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,12 +68,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 </head>
+
+<header>
+    <a href="#" class="logo"><span>Logo</span></a>
+    <ul class="navbar">
+        <li><a href="home.html" class="Active">Inicio</a></li>
+        <li><a href="sobre.html" class="">Sobre</a></li>
+        <li><a href="" class="">Projetos</a></li>
+        <li><a href="" class="">Contato</a></li>
+    </ul>
+</header>
+
 <body>
-    
+
     <div class="main-login">
         <div class="left-login">
             <h1>Faça seu cadastro<br>e entre para o nosso time</h1>
-            <img src="img/astronauta.svg" class="left-login-img" alt="Animação em 2D de uma astronauta em um traje verde flutuando entre estrelas e luas">
+            <img src="img/astronauta.svg" class="left-login-img"
+                alt="Animação em 2D de uma astronauta em um traje verde flutuando entre estrelas e luas">
         </div>
         <div class="right-login">
             <div class="card-login">
@@ -82,15 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <label for="usuario">Usuário</label>
                         <input type="text" name="usuario" placeholder="Digite seu usuário" required>
                     </div>
-                    <div class="textfield"> 
+                    <div class="textfield">
                         <label for="email">Email</label>
                         <input type="email" name="email" placeholder="Digite seu email" required>
                     </div>
-                    <div class="textfield"> 
+                    <div class="textfield">
                         <label for="senha">Senha</label>
                         <input type="password" name="senha" placeholder="Digite a sua senha" required>
                     </div>
-                    <div class="textfield"> 
+                    <div class="textfield">
                         <label for="senha_confirmar">Confirmar Senha</label>
                         <input type="password" name="senha_confirmar" placeholder="Confirme sua senha" required>
                     </div>
@@ -104,4 +117,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 </body>
+
 </html>
