@@ -1,4 +1,7 @@
 <?php
+// Iniciar sessão no início do script
+session_start();
+
 // Defina uma variável para verificar se o login falhou
 $login_failed = false;
 
@@ -19,12 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Escapar caracteres especiais para evitar SQL Injection
-    $usuario = mysqli_real_escape_string($conn, $_POST['usuario']);
-    $senha = mysqli_real_escape_string($conn, $_POST['senha']);
+    $usuario = $conn->real_escape_string($_POST['usuario']);
+    $senha = $conn->real_escape_string($_POST['senha']);
 
-    // Consulta SQL para verificar se o usuário existe
-    $sql = "SELECT * FROM usuarios WHERE nome = '$usuario'";
-    $result = $conn->query($sql);
+    // Usar preparação de consultas para maior segurança
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE nome = ?");
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result) {
         if ($result->num_rows == 1) {
@@ -32,8 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $result->fetch_assoc();
             if (password_verify($senha, $row['senha'])) {
                 // Senha correta, login bem-sucedido
-                session_start();
-                $_SESSION['usuario'] = $usuario; // Iniciar sessão
+                $_SESSION['usuario'] = $usuario; // Definir variável de sessão
                 header("Location: aaa.php");
                 exit;
             } else {
@@ -51,6 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         error_log("Erro na consulta SQL: " . $conn->error);
     }
 
+    // Fechar a declaração
+    $stmt->close();
     // Fechar conexão
     $conn->close();
 }
@@ -58,18 +64,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 
-    <link rel="stylesheet" href="csss/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
-
 </head>
 <header>
     <a href="#" class="logo"><span>Logo</span></a>
@@ -80,9 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <li><a href="" class="">Contato</a></li>
     </ul>
 </header>
-
 <body>
-
     <div class="main-login">
         <div class="left-login">
             <h1>Faça seu login<br>E entre para o nosso time</h1>
@@ -102,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <button type="submit" class="btn-login">LOGIN</button>
                     <br><br>
-                    <p>Não possui conta, realize o cadastro <a href="cadastro.php">aqui</a></p>
+                    <p>Não possui conta? Realize o cadastro <a href="cadastro.php">aqui</a></p>
                     <?php if ($login_failed) : ?>
                         <p style="color: red; font-size: 14px; margin-top: 5px;">Usuário ou senha incorretos!</p>
                     <?php endif; ?>
@@ -110,7 +112,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
-
 </body>
-
 </html>
