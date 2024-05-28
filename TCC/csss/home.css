@@ -17,7 +17,7 @@
     font-style: normal;
   }
 body{
-    min-height: 100vh;
+    min-height: 87.3vh;
     background: linear-gradient(#000000,#070808,#0c551a,#1baa38);
     color: var(--text-color)
 }
@@ -142,6 +142,7 @@ section{
         padding: 0px 25px;
         transition: all .50s ease;
         
+        
     }
     .navbar a:houver{
         color: var(--text-color);
@@ -161,9 +162,12 @@ section{
 /* pagina do sobre */
 
 .container{
-    padding-top: 350px;
+    padding-top: 0px;
     padding-left: 50px;
     background-color: linear-fg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 h1{
     font-size: 60px;
@@ -173,6 +177,7 @@ p {
 }
 
 .container{
+    padding-top: 30px;
     margin-top: 80px;
     background-color: linear-fg;
 }
@@ -213,4 +218,12 @@ p {
 
 .btn:hover {
     background-color: #0056b3;
+}
+.moeda{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.moeda img {
+    height: 70%;
 }
