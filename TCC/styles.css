@@ -1,71 +1,91 @@
-body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
-    background: linear-gradient(#000000,#070808,#0c551a,#3daa53);
-    min-height: 100vh;
+    box-sizing: border-box;
 }
 
+/* Estilo do corpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(#000000, #070808, #0c551a, #1baa38);
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Cabeçalho */
 header {
-    background-color: #000000;
-    color: #fff;
-    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 0;
     text-align: center;
-    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.agatinha {
-    margin: 5px;
-    color: rgb(127, 245, 9);
+header h1 {
+    font-size: 2.5rem;
 }
 
+/* Estilos principais */
 main {
     padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
 }
 
+/* Estilo para as seções */
 section {
-    margin-bottom: 30px;
-    text-align: center;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    color: #333;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+section h1, section h2 {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Imagem após parágrafo */
+.imagem-apos-paragrafo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos adicionais para títulos */
+.agatinha {
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .rolim {
-    color: #ffffff;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+.amovc {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.imagem-apos-paragrafo {
-    display: inline-block;
-    margin-left: 20px; 
-  }
+/* Estilo para links */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
 
-  .amovc{
-    color: #ffffff;
-    font-style: italic;
-
-  }
-
-  p{
-    font-size: 145%;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #fff;
-  }
-
-
- 
+a:hover {
+    text-decoration: underline;
+}
