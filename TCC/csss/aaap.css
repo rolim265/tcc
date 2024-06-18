@@ -18,10 +18,11 @@
   }
 body{
     min-height: 100vh;
-    background: linear-gradient(#000000,#070808,#0c551a,#1baa38);
+    background-color:rgb(28,28,28) ;
     color: var(--text-color)
 }
 header{
+    max-height: 100px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -30,7 +31,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: transparent;
+    background-color: #000000;
     padding: 28px 12%;
     transition: all .50s ease;
 }
