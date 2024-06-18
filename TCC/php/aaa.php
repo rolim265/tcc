@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serviços Premium</title>
-    <link rel="stylesheet" href="../csss/home.css">
+    <link rel="stylesheet" href="../csss/aaap.css">
 
     <style>
         .vad {
@@ -42,9 +42,9 @@
 
 
     <header>
-        <a href="#" class="logo"><span>Logo</span></a>
+        <a href="#" class="logo"><span><img src="../img/logocoffe.png" alt="" style="height: 65px;"></span></a>
         <ul class="navbar">
-            <li><a href="../html/home.html" class="Active">Inicio</a></li>
+            <li><a href="../php/aaa.php" class="Active">Inicio</a></li>
             <li><a href="../html/sobre.html" class="">Sobre</a></li>
             <li><a href="aulas.php" class="">Vídeos Aulas</a></li>
             <li><a href="" class="">Contato</a></li>
