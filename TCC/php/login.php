@@ -75,16 +75,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<header>
-    <a href="#" class="logo"><span>Logo</span></a>
-    <ul class="navbar">
-        <li><a href="../html/home.html" class="Active">Inicio</a></li>
-        <li><a href="../html/sobre.html" class="">Sobre</a></li>
-        <li><a href="" class="">Projetos</a></li>
-        <li><a href="" class="">Contato</a></li>
-    </ul>
-</header>
+
+
 <body>
+    <header style="padding-bottom: 25px">
+        <a href="#" class="logo"><span><img src="../img/logocoffe.png" alt="" style="height: 65px;"></span></a>
+
+    
+    </header>
     <div class="main-login">
         <div class="left-login">
             <h1>Faça seu login<br>E entre para o nosso time</h1>
