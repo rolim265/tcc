@@ -162,7 +162,7 @@ section{
 /* pagina do sobre */
 
 .container{
-    padding-top: 0px;
+    padding-top: 80px;
     padding-left: 50px;
     background-color: linear-fg;
     display: flex;
@@ -176,11 +176,7 @@ p {
     font-size: 20px;
 }
 
-.container{
-    padding-top: 30px;
 
-    background-color: linear-fg;
-}
 .services {
     display: flex;
     flex-wrap: wrap;
