@@ -1,10 +1,42 @@
+<?php
+// Estabelecer conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "tcc";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Iniciar sessão no topo da página
+session_start();
+
+// Verificar se a variável de sessão está definida e o usuário está logado
+if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+    $nome = $_SESSION['nome'];
+    $email = $_SESSION['email'];
+
+    // Aqui você pode usar $id_usuario para realizar consultas ou exibições específicas do usuário
+} else {
+    // Se o usuário não estiver logado, redirecione para a página de login
+    header("Location: login.php");
+    exit;
+}
+
+// Fechar conexão com o banco de dados
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços Premium</title>
+    <title>home</title>
     <link rel="stylesheet" href="../csss/aaap.css">
 
     <style>
@@ -137,16 +169,16 @@
             margin-right: 0;
         } */
         /* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Import da fonte Poppins (descomente se necessário) */
-/*@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");*/
+        /* Import da fonte Poppins (descomente se necessário) */
+        /*@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");*/
 
-/* Estilos do dropdown */
+        /* Estilos do dropdown */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -201,7 +233,6 @@
         .dropdown:hover .dropbtn {
             background-color: #1e8e3e;
         }
-
     </style>
 
 </head>
@@ -218,14 +249,14 @@
             <li><a href="#">Contato</a></li>
         </ul>
         <div class="dropdown">
-    <button onclick="toggleDropdown()" class="dropbtn">Breno</button>
-    <div id="dropdownContent" class="dropdown-content">
-        <a href="#">Editar</a>
-        <a href="#">Email:</a>
-        <hr />
-        <a href="../html/home.html" class="user"><i class="ri-user-fill"></i>Log out</a>
-    </div>
-
+            <button onclick="toggleDropdown()" class="dropbtn"><?php echo $nome; ?></button>
+            <div id="dropdownContent" class="dropdown-content">
+                <a href="#">Editar</a>
+                <a href="#">Email: <?php echo $email; ?></a>
+                <hr />
+                <a href="logout.php" class="user"><i class="ri-user-fill"></i>Log out</a>
+            </div>
+        </div>
     </header>
 
     <!-- Início dos textos -->
@@ -269,7 +300,7 @@
 
     <!-- Início dos Serviços -->
     <section class="services">
-        <h2>Nossos Serviços Premium</h2>
+        <h2>Faça parte de nossa comunidade</h2>
         <?php
         $servername = "localhost";
         $username = "root";
@@ -304,20 +335,20 @@
 
     <script>
         function toggleDropdown() {
-        document.getElementById("dropdownContent").classList.toggle("show");
-    }
+            document.getElementById("dropdownContent").classList.toggle("show");
+        }
 
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
                 }
             }
         }
-    }
     </script>
 
 </body>

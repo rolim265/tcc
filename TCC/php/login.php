@@ -36,8 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Usuário encontrado, verificar a senha
             $row = $result->fetch_assoc();
             if (password_verify($senha, $row['senha'])) {
-                // Senha correta, login bem-sucedido
-                $_SESSION['usuario'] = $usuario; // Definir variável de sessão
+                
+                $_SESSION['id'] = $row['id']; // Armazenar
+                $_SESSION['nome'] = $row['nome']; 
+                $_SESSION['email'] = $row['email'];
                 header("Location: aaa.php");
                 exit;
             } else {
@@ -61,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
