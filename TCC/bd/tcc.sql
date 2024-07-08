@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/06/2024 às 16:23
+-- Tempo de geração: 08/07/2024 às 19:12
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -66,16 +66,20 @@ CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `email` varchar(255) NOT NULL,
+  `cartao` text NOT NULL,
+  `conhecimento` text NOT NULL,
+  `renda_mensal` decimal(30,0) NOT NULL,
+  `valor_final` decimal(25,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `senha`, `email`) VALUES
-(1, 'Gabriel', '159784', ''),
-(8, 'Rolim', '$2y$10$amTlH/kmT6VoZvR6f98T6OkaxN/g3E1DkknNTySVpfYFFPjOOcdoi', 'rolim8096@gmail.com');
+INSERT INTO `usuarios` (`id`, `nome`, `senha`, `email`, `cartao`, `conhecimento`, `renda_mensal`, `valor_final`) VALUES
+(1, 'Gabriel', '159784', '', '', '', 0, 0),
+(9, 'Gabriel Rodrigues Rolim ', '$2y$10$m3tmPacNtWMSmRhdFjVdie.IJ.VUb/1gh/99N7UmwK0bR6IHjJvbK', 'rolim8096@gmail.com', 'débito', 'básico', 1550, 300);
 
 -- --------------------------------------------------------
 
@@ -144,7 +148,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `video`
