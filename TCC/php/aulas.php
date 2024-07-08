@@ -118,15 +118,7 @@
 <section class="services">
     <h2>Video Aulas</h2>
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "tcc";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+     include('conexao.php');
 
         $sql = "SELECT * FROM video";
         $result = $conn->query($sql);

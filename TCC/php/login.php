@@ -8,18 +8,7 @@ $login_failed = false;
 // Verificar se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Conectar ao banco de dados (substitua essas informações com as suas)
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "tcc";
-
-    // Criar conexão
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verificar a conexão
-    if ($conn->connect_error) {
-        die("Conexão falhou: " . $conn->connect_error);
-    }
+    include('conexao.php');
 
     // Escapar caracteres especiais para evitar SQL Injection
     $usuario = $conn->real_escape_string($_POST['usuario']);

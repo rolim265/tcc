@@ -9,3 +9,5 @@ session_destroy();
 header("Location: ../html/home.html");
 
 ?>
+
+include('conexao.php');

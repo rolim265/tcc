@@ -1,14 +1,5 @@
 <?php
-// Estabelecer conexão com o banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "tcc";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include('conexao.php');
 
 // Iniciar sessão no topo da página
 session_start();
@@ -233,6 +224,100 @@ $conn->close();
         .dropdown:hover .dropbtn {
             background-color: #1e8e3e;
         }
+
+
+
+
+        /* Estilos para o modal */
+        .modal {
+            display: none;
+            /* Oculto por padrão */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            /* Fallback */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Fundo preto com opacidade */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% do topo e centralizado horizontalmente */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Pode ser ajustado */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+
+
+        /* Estilos para o Modal */
+        .modal {
+            display: none;
+            /* Oculto por padrão */
+            position: fixed;
+            /* Fica fixo na tela */
+            z-index: 1;
+            /* Fica na frente de outros elementos */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Largura total */
+            height: 100%;
+            /* Altura total */
+            overflow: auto;
+            /* Habilita rolagem se necessário */
+            background-color: rgb(0, 0, 0);
+            /* Cor de fundo */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Fundo com transparência */
+    
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% do topo e centralizado horizontalmente */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Largura do modal */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 
 </head>
@@ -248,15 +333,36 @@ $conn->close();
             <li><a href="aulas.php">Vídeos Aulas</a></li>
             <li><a href="#">Contato</a></li>
         </ul>
+
         <div class="dropdown">
             <button onclick="toggleDropdown()" class="dropbtn"><?php echo $nome; ?></button>
             <div id="dropdownContent" class="dropdown-content">
-                <a href="#">Editar</a>
+                <a id="editBtn">Editar</a>
                 <a href="#">Email: <?php echo $email; ?></a>
                 <hr />
                 <a href="logout.php" class="user"><i class="ri-user-fill"></i>Log out</a>
             </div>
         </div>
+
+        <!-- O Modal de Edição -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 style="color: black;" >Editar Perfil</h2>
+                <div id="modal-body"></div>
+            </div>
+        </div>
+
+
+    </header>
+
+
+
+    <a href="#">Email: <?php echo $email; ?></a>
+    <hr />
+    <a href="logout.php" class="user"><i class="ri-user-fill"></i>Log out</a>
+    </div>
+    </div>
     </header>
 
     <!-- Início dos textos -->
@@ -334,19 +440,34 @@ $conn->close();
     <br><br>
 
     <script>
+        // Função para abrir/fechar o dropdown
         function toggleDropdown() {
-            document.getElementById("dropdownContent").classList.toggle("show");
+            var dropdownContent = document.getElementById("dropdownContent");
+            dropdownContent.classList.toggle("show");
         }
 
+        // Quando o usuário clicar no botão de edição, carrega o modal com os dados do usuário
+        document.getElementById('editBtn').onclick = function() {
+            const userId = <?php echo $id; ?>; // Assumindo que o ID do usuário está disponível no PHP
+
+            // Faz uma requisição AJAX para carregar os dados do usuário
+            fetch('editar_perfil.php?id=' + userId)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('modal-body').innerHTML = data;
+                    document.getElementById('editModal').style.display = "block";
+                });
+        }
+
+        // Quando o usuário clicar em <span> (x), fecha o modal de edição
+        document.getElementsByClassName('close')[0].onclick = function() {
+            document.getElementById('editModal').style.display = "none";
+        }
+
+        // Quando o usuário clicar em qualquer lugar fora do modal de edição, fecha o modal de edição
         window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
+            if (event.target == document.getElementById('editModal')) {
+                document.getElementById('editModal').style.display = "none";
             }
         }
     </script>
