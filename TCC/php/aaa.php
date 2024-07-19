@@ -246,7 +246,7 @@ $conn->close();
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: black;
             margin: 15% auto;
             /* 15% do topo e centralizado horizontalmente */
             padding: 20px;
@@ -296,7 +296,7 @@ $conn->close();
         }
 
         .modal-content {
-            background-color: #fefefe;
+            background-color: black;
             margin: 15% auto;
             /* 15% do topo e centralizado horizontalmente */
             padding: 20px;

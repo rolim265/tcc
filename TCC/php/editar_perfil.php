@@ -49,6 +49,8 @@ if (isset($_GET['id'])) {
 // Se houver um usuário encontrado para o ID, exibe o formulário de edição
 if ($usuario):
 ?>
+<link rel="stylesheet" href="../csss/editar.css">
+
 
 <form method="post" action="editar_perfil.php?id=<?php echo $id; ?>">
     <label style="color: black;" for="nome">Nome:</label>
