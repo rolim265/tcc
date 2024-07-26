@@ -292,7 +292,7 @@ $conn->close();
             /* Cor de fundo */
             background-color: rgba(0, 0, 0, 0.4);
             /* Fundo com transparência */
-    
+
         }
 
         .modal-content {
@@ -318,11 +318,73 @@ $conn->close();
             text-decoration: none;
             cursor: pointer;
         }
+
+        .cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        .cookie-consent-banner p {
+            margin: 0;
+        }
+
+        .cookie-consent-banner a {
+            color: #ffdd57;
+            text-decoration: underline;
+        }
+
+        .cookie-consent-banner button {
+            background-color: #ffdd57;
+            border: none;
+            color: #333;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+
+
+
+        .profile-warning {
+            display: none;
+            /* Inicialmente escondido */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f44336;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        .profile-warning p {
+            margin: 0;
+        }
+
+        .profile-warning a {
+            color: #ffdd57;
+            text-decoration: underline;
+        }
     </style>
 
 </head>
 
 <body>
+
+    <!-- Profile Completion Warning -->
+    <div id="profile-warning" class="profile-warning">
+        <p>Seu perfil não está completo. <a href="/editar_perfil.php">Complete seu perfil agora</a>.</p>
+    </div>
+
 
 
     <header>
@@ -347,8 +409,8 @@ $conn->close();
         <!-- O Modal de Edição -->
         <div id="editModal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2 style="color: black;" >Editar Perfil</h2>
+                <span style="color:red" class="close">&times;</span>
+                <h2 style="color: black;">Editar Perfil</h2>
                 <div id="modal-body"></div>
             </div>
         </div>
@@ -438,6 +500,17 @@ $conn->close();
     </section>
 
     <br><br>
+    <!-- Profile Completion Warning -->
+    <div id="profile-warning" class="profile-warning">
+        <p>Seu perfil não está completo. <a href="/editar_perfil.php">Complete seu perfil agora</a>.</p>
+    </div>
+
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" class="cookie-consent-banner">
+        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="/politica-de-cookies">Saiba mais</a>.</p>
+        <button id="cookie-consent-button">Entendi</button>
+    </div>
 
     <script>
         // Função para abrir/fechar o dropdown
@@ -470,7 +543,29 @@ $conn->close();
                 document.getElementById('editModal').style.display = "none";
             }
         }
+
+        // Quando o usuário clica no botão de entendi do banner de cookies, fecha o banner
+        document.getElementById('cookie-consent-button').addEventListener('click', function() {
+            document.getElementById('cookie-consent-banner').style.display = 'none';
+            // Você pode adicionar código para definir um cookie aqui, se desejar
+        });
+
+
+        // Verifique se o perfil está completo
+        function checkProfileCompletion() {
+            // Lógica para verificar se o perfil está completo
+            // Exemplo simples: verificar uma variável (ou você pode usar uma chamada AJAX para verificar isso no servidor)
+            var profileComplete = false; // Substitua esta variável pela sua lógica de verificação
+
+            if (!profileComplete) {
+                document.getElementById('profile-warning').style.display = 'block';
+            }
+        }
+
+        // Execute a função quando a página carregar
+        window.onload = checkProfileCompletion;
     </script>
+
 
 </body>
 
