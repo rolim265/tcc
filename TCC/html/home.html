@@ -7,17 +7,48 @@
     <title>Online Recruitment</title>
     <link rel="stylesheet" href="../csss/home.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
-    rel="stylesheet"/>
-    <link rel="stylesheet"
-    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
+<style>
+    .cookie-consent-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    z-index: 1000;
+}
+
+.cookie-consent-banner p {
+    margin: 0;
+}
+
+.cookie-consent-banner a {
+    color: #ffdd57;
+    text-decoration: underline;
+}
+
+.cookie-consent-banner button {
+    background-color: #ffdd57;
+    border: none;
+    color: #333;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+</style>
+
 <body>
-    
+
     <div class="container">
 
         <header>
@@ -31,22 +62,35 @@
                 <a href="../php/login.php" class="user"><i class="ri-user-fill"></i>Login</a>
                 <a href="../php/cadastro.php">Cadastrar</a>
                 <div class="bx bx-menu" id="menu-icon"></div>
-    
+
             </div>
         </header>
-            <div class="content">
-                <h1 class="text">Bem-vindo</h1>
-                <p class="apresentacao">Ao projeto Wise Wallet onde o aprendizado é a peça</p>
-                <p class="apresentacao">fundamental para seu desenvolvimento financeiro</p>
-            </div>
-            <div class="moeda"><img src="../img/artboard-1.gif" alt="" style="height: 450px; width: auto;"></div>
+        <div class="content">
+            <h1 class="text">Bem-vindo</h1>
+            <p class="apresentacao">Ao projeto Wise Wallet onde o aprendizado é a peça</p>
+            <p class="apresentacao">fundamental para seu desenvolvimento financeiro</p>
+        </div>
+        <div class="moeda"><img src="../img/artboard-1.gif" alt="" style="height: 450px; width: auto;"></div>
 
 
-        
 
-        
-    </div>        
-     
+
+
+    </div>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" class="cookie-consent-banner">
+        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a
+                href="https://support.google.com/chrome/answer/95647?hl=pt-BR&co=GENIE.Platform%3DAndroid&sjid=13859596838440895859-SA">Saiba mais</a>.</p>
+        <button id="cookie-consent-button">Entendi</button>
+    </div>
+    <script>
+        // Quando o usuário clica no botão de entendi do banner de cookies, fecha o banner
+        document.getElementById('cookie-consent-button').addEventListener('click', function () {
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+            // Você pode adicionar código para definir um cookie aqui, se desejar
+        });
+
+    </script>
 </body>
 
 </html>

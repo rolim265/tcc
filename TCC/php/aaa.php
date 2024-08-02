@@ -428,41 +428,74 @@ $conn->close();
     </header>
 
     <!-- Início dos textos -->
+
+    <h1>Olá caro(a) <?php echo $nome; ?>! É com muito prazer te recebermos aqui!</h1>
     <div class="vad">
         <img src="../img/familia01.jpg" alt="Descrição da Imagem">
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
-            Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
-            Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-            per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.
-            Pellentesque nibh.
-            Aenean quam. In scelerisque sem at dolor.
+
+            Antes de começar essa jornada, vamos retomar um pouco sobre nosso objetivo principal, sendo necessário que você entenda o que é de fato a Educação Financeira.
+            A Educação Financeira te auxilia a organizar planos para o futuro, também ajuda a administrar contas, finanças e investimentos... Onde você entende como o dinheiro funciona e como realizar ações de maneira inteligente.
+            Nesse site você terá acesso a aulas, juntamente com quiz e um conteúdo fácil de aprender!
+
         </p>
     </div>
     <div class="vad">
+
         <p>
-            https://g1.globo.com/economia/noticia/2022/03/31/endividamento-bate-recorde-em-marco-puxado-pelo-cartao-de-credito-diz-cnc.ghtml
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
-            Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
-            Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-            per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.
-            Pellentesque nibh.
-            Aenean quam. In scelerisque sem at dolor.
+        <h2> O que são Investimentos?</h2>
+        Investimentos são ações, fundos, ou outros instrumentos financeiros que são utilizados para gerar retorno para o investidor.
+        Estes podem ser diversificados, como ações, fundos, ou ativos diretos.
+        Investir significa aplicar seu recurso financeiro com o intuito de receber uma quantia maior futuramente, como uma meta.
+        Para investir, é necessário compreender como funciona os tipos de investimentos, para assim escolher qual se encaixa na sua realidade
+
         </p>
         <img src="../img/g1_endividados.png" alt="Descrição da Imagem">
+        <!-- https://g1.globo.com/economia/noticia/2022/03/31/endividamento-bate-recorde-em-marco-puxado-pelo-cartao-de-credito-diz-cnc.ghtml -->
     </div>
     <div class="vad">
         <img src="../img/quanto+.jpg" alt="Descrição da Imagem">
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.
-            Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.
-            Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
-            Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-            per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor.
-            Pellentesque nibh.
-            Aenean quam. In scelerisque sem at dolor.
+            Como fazer um orçamento pessoal
+            O que é um orçamento pessoal?
+            Um orçamento pessoal é uma espécie de mapa do tesouro financeiro que te ajuda a prever o que você vai gastar e a manter as suas finanças em ordem. A ideia é fazer as suas despesas baterem com o que você ganha, para não acabar gastando mais do que pode.
+
+            Fazer esse planejamento todo mês é tipo a sua bússola financeira. Ele te mostra quais são os gastos que mais afetam a sua carteira, te ajuda a entender como você gasta o seu dinheiro no dia a dia, e até te prepara para quando as coisas não saem como o planejado.
+
+            Além disso, é uma forma de você ficar mais esperto com o dinheiro, aprendendo a tomar decisões melhores.
+
+            O lado legal de ter um orçamento é que ele te ajuda a manter tudo organizado. Você sabe onde tá o seu dinheiro e pode decidir o melhor momento para gastar, evitando despesas que não são tão importantes e problemas que poderiam surgir.
+
+            E o melhor? Você começa a ver os seus sonhos se tornando realidade. Quer fazer uma viagem, comprar um carro ou ter a sua própria casa? Com as finanças organizadas, você está mais perto de conseguir essas coisas.
+            Como fazer um orçamento mensal eficiente em passos simples
+            1. Entenda o que entra e sai
+            Pode parecer básico, mas muita gente não sabe direito quanto ganha por mês. Então, o primeiro passo é somar e anotar todas as suas entradas de dinheiro e despesas. Assim, você já consegue ver o quanto ganha e onde gasta mais.
+
+            2. Separe as despesas
+            Depois de ver o panorama geral, é hora de detalhar as coisas. Liste todas as suas despesas fixas e variáveis:
+            Despesas fixas: Coisas que custam mais ou menos a mesma coisa todo mês, como aluguel, academia, prestação do carro, salários de funcionários, etc.
+            Despesas variáveis: Coisas que podem mudar de valor, como comida, conta de luz, presentes, viagens, etc.
+            Não esqueça das despesas "invisíveis", que são aquelas pequenas que somam sem você perceber, como assinaturas, pedidos de comida e serviços de streaming.
+
+            3. Organize por categorias
+            Agora que você separou as despesas, é hora de colocá-las em categorias e decidir quanto pode gastar por semana e mês em cada uma. Algumas categorias podem ser:
+            Supermercado;
+            Educação;
+            Moradia;
+            Lazer, etc.
+            Lembre-se de que não tem uma regra fixa para o quanto gastar em cada categoria, use o bom senso para decidir de acordo com a sua situação.
+
+            4. Poupe dinheiro
+            Definir um orçamento para cada categoria ajuda a pensar em como economizar e ter mais dinheiro no fim do mês. Veja onde você pode cortar gastos ou gastar menos.
+
+            5. Use o cartão com cuidado
+            Um erro comum é achar que o cartão de crédito é dinheiro extra, mas na verdade é só um adiantamento. Então, certifique-se de que os gastos no cartão não passam do limite que você definiu no orçamento. Usado direito, o cartão pode ajudar nas finanças.
+
+            6. Defina metas claras
+            Organizar as finanças sem um objetivo em mente não faz muito sentido. Pergunte a si mesmo: "Por que estou economizando? Quais despesas são essenciais na minha vida?" Essas perguntas lembram você do motivo de estar fazendo tudo isso. Defina metas de economia para se comprometer ainda mais com o orçamento.
+
+            7. Acabe com as dívidas
+            Dívidas atrapalham o planejamento financeiro. Se você tem dívidas, organize-se para pagá-las e aproveitar todos os benefícios do orçamento pessoal.
         </p>
     </div>
 
@@ -508,7 +541,7 @@ $conn->close();
 
     <!-- Cookie Consent Banner -->
     <div id="cookie-consent-banner" class="cookie-consent-banner">
-        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="/politica-de-cookies">Saiba mais</a>.</p>
+        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="https://support.google.com/chrome/answer/95647?hl=pt-BR&co=GENIE.Platform%3DAndroid&sjid=13859596838440895859-SA">Saiba mais</a>.</p>
         <button id="cookie-consent-button">Entendi</button>
     </div>
 
