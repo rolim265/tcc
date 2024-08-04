@@ -171,7 +171,8 @@ section{
     justify-content: space-between;
 }
 h1{
-    font-size: 25px;
+    font-size: 60px;
+    margin-top: 80px;
 }
 p {
     font-size: 20px;
@@ -227,33 +228,4 @@ p {
 }
 .moeda img {
     height: 70%;
-}
-h2 {
-    padding-left: 80px;
-}
-#typing-text {
-    
-    font-size: 24px;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 2px solid #000;
-    animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
-}
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes blink {
-    from, to {
-        border-color: transparent;
-    }
-    50% {
-        border-color: black;
-    }
 }
