@@ -31,15 +31,24 @@ $conn->close();
     <link rel="stylesheet" href="../csss/aaap.css">
 
     <style>
+        .ola {
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1600px;
+            margin: 50px auto;
+            padding-left: 80px;
+            border-radius: 8px;
+            margin-top: 130px;
+        }
         .vad {
             display: flex;
             align-items: center;
             justify-content: space-between;
             max-width: 1600px;
-            margin: 200px auto;
+            margin: 100px auto;
             padding: 20px;
             border-radius: 8px;
-            margin-top: 130px;
+            margin-top: 30px;
         }
 
         .vad img {
@@ -428,9 +437,15 @@ $conn->close();
     </header>
 
     <!-- Início dos textos -->
+     
+    <div class="ola">
+        <h1 id="typing-text">Olá caro(a) <?php echo $nome; ?>! É com muito prazer te recebermos aqui!</h1>
 
-    <h1>Olá caro(a) <?php echo $nome; ?>! É com muito prazer te recebermos aqui!</h1>
+    </div>
+
+
     <div class="vad">
+        
         <img src="../img/familia01.jpg" alt="Descrição da Imagem">
         <p>
 
@@ -440,10 +455,11 @@ $conn->close();
 
         </p>
     </div>
+    <h2> O que são Investimentos?</h2>
     <div class="vad">
 
         <p>
-        <h2> O que são Investimentos?</h2>
+        
         Investimentos são ações, fundos, ou outros instrumentos financeiros que são utilizados para gerar retorno para o investidor.
         Estes podem ser diversificados, como ações, fundos, ou ativos diretos.
         Investir significa aplicar seu recurso financeiro com o intuito de receber uma quantia maior futuramente, como uma meta.
@@ -597,6 +613,21 @@ $conn->close();
 
         // Execute a função quando a página carregar
         window.onload = checkProfileCompletion;
+        
+        const textElement = document.getElementById('typing-text');
+        const text = "";
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                textElement.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeText, 100); // Ajuste o tempo para mais rápido ou mais lento
+            }
+        }
+
+        typeText();
+    
     </script>
 
 
