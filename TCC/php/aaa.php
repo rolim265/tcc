@@ -185,7 +185,7 @@ $conn->close();
         }
 
         .dropbtn {
-            background-color: #29fd53;
+            background-color: #32CD32;
             color: white;
             font-size: 0.9rem;
             font-weight: 500;
@@ -204,7 +204,7 @@ $conn->close();
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #29fd53;
+            background-color: #32CD32;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             min-width: 160px;
