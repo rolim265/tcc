@@ -429,11 +429,7 @@ $conn->close();
 
 
 
-    <a href="#">Email: <?php echo $email; ?></a>
-    <hr />
-    <a href="logout.php" class="user"><i class="ri-user-fill"></i>Log out</a>
-    </div>
-    </div>
+    
     </header>
 
     <!-- Início dos textos -->

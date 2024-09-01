@@ -98,9 +98,6 @@ $conn->close();
             height: 100%;
             transition: all 300ms;
         }
-        span {
-            color: #f5f5f5;
-        }
 
         .journey {
             margin-bottom: 20px;
@@ -512,14 +509,13 @@ $conn->close();
             <div class="journey">
                 <div class="dropdown">
                     <div class="journey-item">
-                        <a href="../php/teste1.php"><span>Iniciante I</span></a>
-                        
+                        <span>Iniciante I</span>
                     </div>
-                    <!-- <div class="dropdown-content">
+                    <div class="dropdown-content">
                         <a href="#">Texto ou opção 1</a>
                         <a href="#">Texto ou opção 2</a>
                         <a href="#">Texto ou opção 3</a>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="dropdown">
                     <div class="journey-item">
