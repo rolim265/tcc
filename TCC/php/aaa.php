@@ -389,11 +389,6 @@ $conn->close();
 
 <body>
 
-    <!-- Profile Completion Warning -->
-    <div id="profile-warning" class="profile-warning">
-        <p>Seu perfil não está completo. <a href="/editar_perfil.php">Complete seu perfil agora</a>.</p>
-    </div>
-
 
 
     <header>
@@ -547,7 +542,7 @@ $conn->close();
     <br><br>
     <!-- Profile Completion Warning -->
     <div id="profile-warning" class="profile-warning">
-        <p>Seu perfil não está completo. <a href="/editar_perfil.php">Complete seu perfil agora</a>.</p>
+        <p>Seu perfil não está completo. <a href="editar_perfil.php">Complete seu perfil agora</a>.</p>
     </div>
 
 

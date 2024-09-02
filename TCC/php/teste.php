@@ -22,6 +22,7 @@ $conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,6 +99,7 @@ $conn->close();
             height: 100%;
             transition: all 300ms;
         }
+
         span {
             color: #f5f5f5;
         }
@@ -270,6 +272,7 @@ $conn->close();
         .video-item a:hover {
             text-decoration: underline;
         }
+
         .barra-progresso {
             width: 100%;
             height: 20px;
@@ -284,25 +287,38 @@ $conn->close();
             border-radius: 10px;
             transition: all 300ms;
         }
-        
-        
+
+
         /* Adicionei estilos para o botão "Terminado" */
         #botao-terminado {
-        background-color: #4CAF50;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         #botao-terminado:hover {
-        background-color: #3e8e41;
+            background-color: #3e8e41;
         }
+        #submit-btn {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #submit-btn:hover {
+            background-color: #3e8e41;
+        }
+
         .quiz {
             margin-top: 20px;
-        }  */
-        .dropdown {
+        }
+
+        */ .dropdown {
             position: relative;
             display: inline-block;
         }
@@ -424,7 +440,7 @@ $conn->close();
             /* Cor de fundo */
             background-color: rgba(0, 0, 0, 0.4);
             /* Fundo com transparência */
-    
+
         }
 
         .modal-content {
@@ -450,8 +466,37 @@ $conn->close();
             text-decoration: none;
             cursor: pointer;
         }
+        #perguntas {
+            margin: 20px;
+        }
+
+        .pergunta {
+            margin-bottom: 20px;
+        }
+
+        .opcoes {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .opcoes li {
+            margin-bottom: 10px;
+        }
+
+        .opcoes li label {
+            cursor: pointer;
+        }
+
+        .resposta-certa {
+            color: green;
+        }
+
+        .resposta-errada {
+            color: red;
+        }
     </style>
-<header>
+    <header>
         <a href="#" class="logo"><span><img src="../img/logocoffe.png" alt="" style="height: 65px;"></span></a>
         <ul class="navbar">
             <li><a href="../php/aaa.php" class="active">Inicio</a></li>
@@ -474,17 +519,18 @@ $conn->close();
         <div id="editModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2 style="color: black;" >Editar Perfil</h2>
+                <h2 style="color: black;">Editar Perfil</h2>
                 <div id="modal-body"></div>
             </div>
         </div>
 
 
-</header>
+    </header>
+
 <body>
 
 
-    
+
     <div class="container">
         <div class="left-section">
             <div class="header">
@@ -504,97 +550,94 @@ $conn->close();
                 <div class="progress-bar" style="width:0"></div>
             </div>
             <div class="journey">
+                
                 <div class="journey-item">
                     <span>Capítulo 1/3</span>
                     <span>95 palavras restantes</span>
                 </div>
-            </div>
-            <div class="journey">
-                <div class="dropdown">
-                    <div class="journey-item">
-                        <a href="../php/teste1.php"><span>Iniciante I</span></a>
-                        
-                    </div>
-                    <!-- <div class="dropdown-content">
+                <div class="dropdown-content">
                         <a href="#">Texto ou opção 1</a>
                         <a href="#">Texto ou opção 2</a>
-                        <a href="#">Texto ou opção 3</a>
-                    </div> -->
                 </div>
+            </div>
+            <div class="journey">
+                
                 <div class="dropdown">
                     <div class="journey-item">
                         <span>Capítulo 1</span>
                     </div>
                     <div class="dropdown-content">
-                    <?php
-                    // Inclui o arquivo de conexão com o banco de dados
-                    include('conexao.php');
+                        <?php
+                        // Inclui o arquivo de conexão com o banco de dados
+                        include('conexao.php');
 
-                    // Define a consulta SQL para selecionar todos os registros da tabela 'capitulo_um'
-                    $sql = "SELECT * FROM capitulo_um";
+                        // Define a consulta SQL para selecionar todos os registros da tabela 'capitulo_um'
+                        $sql = "SELECT * FROM capitulo_um";
 
-                    // Executa a consulta no banco de dados
-                    $result = $conn->query($sql);
+                        // Executa a consulta no banco de dados
+                        $result = $conn->query($sql);
 
-                    // Verifica se a consulta retornou algum resultado
-                    if ($result->num_rows > 0) {
-                        // Se há resultados, cria um contêiner para a lista de vídeos
-                        echo '<div class="video-list">';
-                        
-                        // Itera sobre cada linha do resultado
-                        while ($row = $result->fetch_assoc()) {
-                            // Extrai o ID do vídeo do YouTube do link fornecido
-                            $video_id = getYoutubeVideoId($row["link"]);
-                            
-                            // Constrói a URL da miniatura do vídeo
-                            $thumbnail_url = "https://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
-                            
-                            // Exibe cada item de vídeo dentro de um contêiner
-                            echo '<div class="video-item">';
-                            // Cria um link para a página do vídeo com o ID do vídeo como parâmetro
-                            echo '<a href="video_page.php?id=' . htmlspecialchars($row["id"], ENT_QUOTES, 'UTF-8') . '">';
-                            // Exibe a miniatura do vídeo
-                            echo '<img src="' . htmlspecialchars($thumbnail_url, ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '">';
-                            // Exibe o título do vídeo
-                            echo '<span>' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '</span>';
-                            echo '</a>';
-                            echo '</div>';
-                        }
-                        
-                        // Fecha o contêiner da lista de vídeos
-                        echo '</div>';
-                    } else {
-                        // Se não houver resultados, exibe uma mensagem
-                        echo "<p>0 resultados</p>";
-                    }
+                        // Verifica se a consulta retornou algum resultado
+                        if ($result->num_rows > 0) {
+                            // Se há resultados, cria um contêiner para a lista de vídeos
+                            echo '<div class="video-list">';
 
-                    // Fecha a conexão com o banco de dados
-                    $conn->close();
+                            // Itera sobre cada linha do resultado
+                            while ($row = $result->fetch_assoc()) {
+                                // Extrai o ID do vídeo do YouTube do link fornecido
+                                $video_id = getYoutubeVideoId($row["link"]);
 
-                    // Função para extrair o ID do vídeo do YouTube do link
-                    function getYoutubeVideoId($url) {
-                        $video_id = '';
-                        
-                        // Analisa a URL para obter seus componentes
-                        $url_parts = parse_url($url);
-                        
-                        // Verifica se a URL contém parâmetros de consulta
-                        if (isset($url_parts['query'])) {
-                            parse_str($url_parts['query'], $query_vars);
-                            // Se o parâmetro 'v' estiver presente, ele é o ID do vídeo
-                            if (isset($query_vars['v'])) {
-                                $video_id = $query_vars['v'];
+                                // Constrói a URL da miniatura do vídeo
+                                $thumbnail_url = "https://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
+
+                                // Exibe cada item de vídeo dentro de um contêiner
+                                echo '<div class="video-item">';
+                                // Cria um link para a página do vídeo com o ID do vídeo como parâmetro
+                                echo '<a href="video_page.php?id=' . htmlspecialchars($row["id"], ENT_QUOTES, 'UTF-8') . '">';
+                                // Exibe a miniatura do vídeo
+                                echo '<img src="' . htmlspecialchars($thumbnail_url, ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '">';
+                                // Exibe o nome do vídeo
+                                echo '<span>' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '</span>';
+                                echo '</a>';
+                                echo '</div>';
                             }
-                        } 
-                        // Caso a URL não tenha parâmetros de consulta, tenta extrair o ID com uma expressão regular
-                        else if (preg_match("/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/", $url, $matches)) {
-                            $video_id = $matches[1];
+
+                            // Fecha o contêiner da lista de vídeos
+                            echo '</div>';
+                        } else {
+                            // Se não houver resultados, exibe uma mensagem
+                            echo "<p>0 resultados</p>";
                         }
-                        
-                        // Retorna o ID do vídeo
-                        return $video_id;
-                    }
-                    ?>
+
+                        // Fecha a conexão com o banco de dados
+                        $conn->close();
+
+                        // Função para extrair o ID do vídeo do YouTube do link
+                        function getYoutubeVideoId($url)
+                        {
+                            $video_id = '';
+
+                            // Analisa a URL para obter seus componentes
+                            $url_parts = parse_url($url);
+
+                            // Verifica se a URL contém parâmetros de consulta
+                            if (isset($url_parts['query'])) {
+                                parse_str($url_parts['query'], $query_vars);
+                                // Se o parâmetro 'v' estiver presente, ele é o ID do vídeo
+                                if (isset($query_vars['v'])) {
+                                    $video_id = $query_vars['v'];
+                                }
+                            }
+                            // Caso a URL não tenha parâmetros de consulta, tenta extrair o ID com uma expressão regular
+                            else if (preg_match("/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/", $url, $matches)) {
+                                $video_id = $matches[1];
+                            }
+
+                            // Retorna o ID do vídeo
+                            return $video_id;
+                        }
+                        ?>
+
 
                     </div>
                 </div>
@@ -603,7 +646,7 @@ $conn->close();
                         <span>Capítulo 2</span>
                     </div>
                     <div class="dropdown-content">
-                    <?php
+                        <?php
                         include('conexao.php');
 
                         $sql = "SELECT * FROM video";
@@ -628,7 +671,8 @@ $conn->close();
                         $conn->close();
 
                         // Função para extrair o ID do vídeo do YouTube do link
-                        function getYoutubeVideoIdOutraTabela($url) {
+                        function getYoutubeVideoIdOutraTabela($url)
+                        {
                             $video_id = '';
                             $url_parts = parse_url($url);
                             if (isset($url_parts['query'])) {
@@ -653,30 +697,31 @@ $conn->close();
                         <a href="#">Texto adicional</a>
                     </div>
                 </div>
-                <div class="dropdown">
-                    <div class="journey-item">
-                        <span>Iniciante II</span>
-                    </div>
-                    <div class="dropdown-content">
-                        <a href="#">Texto ou opção 1</a>
-                        <a href="#">Texto ou opção 2</a>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="right-section">
             <div class="right-header">
-                <h2>Bom trabalho por hoje!</h2>
-                
-                <div class="success-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
-                </div>
+                <button id="botao-terminado" style="text-aling: right;">Terminado</button>
+
+                <!-- <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2v-4h2v4z" />
+                    </svg>
+                </div> -->
             </div>
             <div class="right-header">
-                <div class="success-text">5/5</div>
+                <div class="success-text" id="placar"></div>
                 <div class="success-text">+5</div>
             </div>
-            <div class="extra-mile">
+
+            <div id="perguntas">
+        <!-- As perguntas serão exibidas aqui -->
+            </div>
+            <button id="submit-btn">Enviar Respostas</button>
+            <br>
+            <br>
+            
+            <!-- <div class="extra-mile">
                 <div class="card" style="background-color: #3e3e3e;">
                     <div class="points" style="background-color: #ff9800;">+1</div>
                     <div class="title">Construa seu vocabulário</div>
@@ -695,22 +740,80 @@ $conn->close();
                     <div class="description">Pratique falar em situações reais.</div>
                     <div class="action">Praticar Agora</div>
                 </div>
-                
-            </div>
-            <button id="botao-terminado">Terminado</button>
+
+            </div> -->
+            
+            
         </div>
     </div>
-    
+
     <script>
         const botaoTerminado = document.getElementById('botao-terminado');
         const progressBar = document.querySelector('.progress-bar');
         let progressoAtual = 0;
 
         botaoTerminado.addEventListener('click', () => {
-        progressoAtual += 10; // aumenta o progresso em 10%
-        progressBar.style.width = `${progressoAtual}%`;
+            progressoAtual += 10; // aumenta o progresso em 10%
+            progressBar.style.width = `${progressoAtual}%`;
         });
-        
+
+        // Defina as perguntas e respostas
+        const perguntas = [
+          {
+            pergunta: "Qual é a capital do Brasil?",
+            opcoes: ["São Paulo", "Rio de Janeiro", "Brasília", "Belo Horizonte"],
+            resposta: 2
+          },
+          {
+            pergunta: "Qual é o maior planeta do nosso sistema solar?",
+            opcoes: ["Terra", "Saturno", "Júpiter", "Urano"],
+            resposta: 2
+          }
+        ];
+
+        // Função para exibir as perguntas e verificar as respostas
+        function exibirPerguntas() {
+          let pontuacao = 0;
+          const perguntasElement = document.getElementById("perguntas");
+          for (let i = 0; i < perguntas.length; i++) {
+            const pergunta = perguntas[i];
+            const perguntaElement = document.createElement("div");
+            perguntaElement.className = "pergunta";
+            perguntaElement.innerHTML = `<h2>${pergunta.pergunta}</h2>
+                                         <ul class="opcoes">
+                                           ${pergunta.opcoes.map((opcao, index) => `<li><input type="radio" name="pergunta${i}" value="${index}">${opcao}</li>`).join("")}
+                                         </ul>`;
+            perguntasElement.appendChild(perguntaElement);
+          }
+        }
+
+        // Função para verificar as respostas
+        function verificarRespostas() {
+          let pontuacao = 0;
+          for (let i = 0; i < perguntas.length; i++) {
+            const radios = document.getElementsByName(`pergunta${i}`);
+            let respostaUsuario = null;
+            for (let j = 0; j < radios.length; j++) {
+              if (radios[j].checked) {
+                respostaUsuario = parseInt(radios[j].value);
+                break;
+              }
+            }
+            if (respostaUsuario === perguntas[i].resposta) {
+              pontuacao++;
+            }
+          }
+          
+          const placarElement = document.getElementById("placar");
+          placarElement.innerHTML = `${pontuacao}/${perguntas.length}`;
+        }
+
+        // Chame a função para exibir as perguntas
+        exibirPerguntas();
+
+        // Adicione um evento de clique ao botão de envio
+        document.getElementById("submit-btn").addEventListener("click", verificarRespostas);
     </script>
 </body>
+
 </html>
