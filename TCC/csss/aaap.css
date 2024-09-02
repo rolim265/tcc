@@ -67,11 +67,11 @@ header{
     color: var(--main-color);
 
 }
-.navbar a.active{
-    color: var(--main-color);
+/* .navbar a.active{
+    
 
 
-}
+} */
 .main{
     display: flex;
     align-items: center;
