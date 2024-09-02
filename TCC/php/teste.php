@@ -297,6 +297,7 @@ $conn->close();
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            float: right;
         }
 
         #botao-terminado:hover {
@@ -474,26 +475,39 @@ $conn->close();
             margin-bottom: 20px;
         }
 
+        .questionario {
+        max-width: 800px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: #333;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .pergunta {
+        margin-bottom: 20px;
+        }
+
         .opcoes {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        list-style: none;
+        padding: 0;
+        margin: 0;
         }
 
         .opcoes li {
-            margin-bottom: 10px;
+        margin-bottom: 10px;
         }
 
         .opcoes li label {
-            cursor: pointer;
+        cursor: pointer;
         }
 
         .resposta-certa {
-            color: green;
+        color: green;
         }
 
         .resposta-errada {
-            color: red;
+        color: red;
         }
     </style>
     <header>
@@ -538,12 +552,11 @@ $conn->close();
             </div>
             <div class="stats">
                 <div class="stat">
-                    <span>1</span>
-                    <span>dia de progresso</span>
+                    
+                    <span>PROGRESSO</span>
                 </div>
                 <div class="stat">
-                    <span>5</span>
-                    <span>palavras</span>
+                    
                 </div>
             </div>
             <div class="progress">
@@ -702,7 +715,6 @@ $conn->close();
         <div class="right-section">
             <div class="right-header">
                 <button id="botao-terminado" style="text-aling: right;">Terminado</button>
-
                 <!-- <div class="success-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2v-4h2v4z" />

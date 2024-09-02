@@ -74,6 +74,22 @@ if (isset($_GET['id'])) {
             line-height: 1.5;
             color: #f5f5f5;
         }
+        a {
+            text-decoration: none;
+        }
+        #botao-terminado {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            
+        }
+
+        #botao-terminado:hover {
+            background-color: #3e8e41;
+        }
     </style>
 </head>
 <body>
@@ -83,6 +99,11 @@ if (isset($_GET['id'])) {
         </div>
         <h1><?php echo htmlspecialchars($video['titulo'], ENT_QUOTES, 'UTF-8'); ?></h1>
     </div>
+    <br>
+    <br>
+    <a href="../php/teste.php" id="botao-terminado">Perguntas</a>
+    <br>
+    <br>
 </body>
 </html>
 
