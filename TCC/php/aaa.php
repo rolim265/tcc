@@ -396,7 +396,7 @@ $conn->close();
         <ul class="navbar">
             <li><a href="../php/aaa.php" class="active">Inicio</a></li>
             <li><a href="../html/sobre.html">Sobre</a></li>
-            <li><a href="aulas.php">Vídeos Aulas</a></li>
+            <li><a href="../php/teste.php">Vídeos Aulas</a></li>
             <li><a href="#">Contato</a></li>
         </ul>
 

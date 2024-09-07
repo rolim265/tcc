@@ -17,6 +17,7 @@ if (isset($_SESSION['id'])) {
     exit;
 }
 
+
 // Fechar conexão com o banco de dados
 $conn->close();
 ?>
@@ -580,78 +581,7 @@ $conn->close();
                         <span>Capítulo 1</span>
                     </div>
                     <div class="dropdown-content">
-                        <?php
-                        // Inclui o arquivo de conexão com o banco de dados
-                        include('conexao.php');
-
-                        // Define a consulta SQL para selecionar todos os registros da tabela 'capitulo_um'
-                        $sql = "SELECT * FROM capitulo_um";
-
-                        // Executa a consulta no banco de dados
-                        $result = $conn->query($sql);
-
-                        // Verifica se a consulta retornou algum resultado
-                        if ($result->num_rows > 0) {
-                            // Se há resultados, cria um contêiner para a lista de vídeos
-                            echo '<div class="video-list">';
-
-                            // Itera sobre cada linha do resultado
-                            while ($row = $result->fetch_assoc()) {
-                                // Extrai o ID do vídeo do YouTube do link fornecido
-                                $video_id = getYoutubeVideoId($row["link"]);
-
-                                // Constrói a URL da miniatura do vídeo
-                                $thumbnail_url = "https://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
-
-                                // Exibe cada item de vídeo dentro de um contêiner
-                                echo '<div class="video-item">';
-                                // Cria um link para a página do vídeo com o ID do vídeo como parâmetro
-                                echo '<a href="video_page.php?id=' . htmlspecialchars($row["id"], ENT_QUOTES, 'UTF-8') . '">';
-                                // Exibe a miniatura do vídeo
-                                echo '<img src="' . htmlspecialchars($thumbnail_url, ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '">';
-                                // Exibe o nome do vídeo
-                                echo '<span>' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '</span>';
-                                echo '</a>';
-                                echo '</div>';
-                            }
-
-                            // Fecha o contêiner da lista de vídeos
-                            echo '</div>';
-                        } else {
-                            // Se não houver resultados, exibe uma mensagem
-                            echo "<p>0 resultados</p>";
-                        }
-
-                        // Fecha a conexão com o banco de dados
-                        $conn->close();
-
-                        // Função para extrair o ID do vídeo do YouTube do link
-                        function getYoutubeVideoId($url)
-                        {
-                            $video_id = '';
-
-                            // Analisa a URL para obter seus componentes
-                            $url_parts = parse_url($url);
-
-                            // Verifica se a URL contém parâmetros de consulta
-                            if (isset($url_parts['query'])) {
-                                parse_str($url_parts['query'], $query_vars);
-                                // Se o parâmetro 'v' estiver presente, ele é o ID do vídeo
-                                if (isset($query_vars['v'])) {
-                                    $video_id = $query_vars['v'];
-                                }
-                            }
-                            // Caso a URL não tenha parâmetros de consulta, tenta extrair o ID com uma expressão regular
-                            else if (preg_match("/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/", $url, $matches)) {
-                                $video_id = $matches[1];
-                            }
-
-                            // Retorna o ID do vídeo
-                            return $video_id;
-                        }
-                        ?>
-
-
+                        <a href="../php/teste1.php">Atividade</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -659,46 +589,7 @@ $conn->close();
                         <span>Capítulo 2</span>
                     </div>
                     <div class="dropdown-content">
-                        <?php
-                        include('conexao.php');
-
-                        $sql = "SELECT * FROM video";
-                        $result = $conn->query($sql);
-
-                        if ($result->num_rows > 0) {
-                            echo '<div class="video-list">';
-                            while ($row = $result->fetch_assoc()) {
-                                $video_id = getYoutubeVideoIdOutraTabela($row["link"]);
-                                $thumbnail_url = "https://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg"; // URL da miniatura
-                                echo '<div class="video-item">';
-                                echo '<a href="video_page.php?id=' . htmlspecialchars($row["id"], ENT_QUOTES, 'UTF-8') . '">';
-                                echo '<img src="' . htmlspecialchars($thumbnail_url, ENT_QUOTES, 'UTF-8') . '" alt="' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '">';
-                                echo '<span>' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '</span>';
-                                echo '</a>';
-                                echo '</div>';
-                            }
-                            echo '</div>';
-                        } else {
-                            echo "<p>0 resultados</p>";
-                        }
-                        $conn->close();
-
-                        // Função para extrair o ID do vídeo do YouTube do link
-                        function getYoutubeVideoIdOutraTabela($url)
-                        {
-                            $video_id = '';
-                            $url_parts = parse_url($url);
-                            if (isset($url_parts['query'])) {
-                                parse_str($url_parts['query'], $query_vars);
-                                if (isset($query_vars['v'])) {
-                                    $video_id = $query_vars['v'];
-                                }
-                            } else if (preg_match("/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/", $url, $matches)) {
-                                $video_id = $matches[1];
-                            }
-                            return $video_id;
-                        }
-                        ?>
+                        <a href="../php/teste2.php">Atividade</a>
                     </div>
                 </div>
                 <div class="dropdown">
@@ -706,32 +597,22 @@ $conn->close();
                         <span>Capítulo 3</span>
                     </div>
                     <div class="dropdown-content">
-                        <a href="#">201 - 300</a>
-                        <a href="#">Texto adicional</a>
+                        <a href="../php/teste3">Atividade</a>
+                        
                     </div>
                 </div>
             </div>
         </div>
         <div class="right-section">
             <div class="right-header">
-                <button id="botao-terminado" style="text-aling: right;">Terminado</button>
+                
                 <!-- <div class="success-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2v-4h2v4z" />
                     </svg>
                 </div> -->
             </div>
-            <div class="right-header">
-                <div class="success-text" id="placar"></div>
-                <div class="success-text">+5</div>
-            </div>
-
-            <div id="perguntas">
-        <!-- As perguntas serão exibidas aqui -->
-            </div>
-            <button id="submit-btn">Enviar Respostas</button>
-            <br>
-            <br>
+            
             
             <!-- <div class="extra-mile">
                 <div class="card" style="background-color: #3e3e3e;">
