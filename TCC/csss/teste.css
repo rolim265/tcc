@@ -187,17 +187,17 @@ p {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding-top: 180px;
+
 }
 
-.service-card {
+/* .service-card {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 300px;
-}
+} */
 
 .service-card h3 {
     color: #333;
