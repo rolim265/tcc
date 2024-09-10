@@ -69,7 +69,7 @@
             background-position: center;
             width: 100%;
             height: 100vh;
-            color: #3ac504;
+            color: #78ce67;
         }
 
         h1 {
@@ -82,8 +82,8 @@
             margin-bottom: 2rem;
         }
 
-        button {
-            background-color: #29fd53; /* Yellow */
+        .cantar a {
+            background-color: #78ce67; /* Yellow */
             color: #fff;
             border: none;
             padding: 1rem 2rem;
@@ -93,7 +93,7 @@
             transition: background-color 0.3s ease;
         }
 
-        button:hover {
+        .cantar a:hover {
             background-color: #222327; /* Darker Yellow */
         }
         .container {
@@ -104,7 +104,7 @@
         .ccc {
             font-size: 4rem;
             margin-bottom: 2rem;
-            color: #FFD700;
+            color: #78ce67;
         }
 
         .aaa {
@@ -124,10 +124,11 @@
         .bbb {
             font-size: 2rem;
             margin-bottom: 1rem;
-            color: #FFD700;
+            color: #78ce67;
         }
         .inf{
             flex-direction: row;
+            display: flex;
         }
         .box {
             background-color: #333;
@@ -158,7 +159,7 @@
 
         .step h2 {
             font-size: 2em;
-            color: #ffc107;
+            color: #78ce67;
             margin: 0;
         }
         .box {
@@ -183,19 +184,70 @@
             display: block;
             font-size: 3rem;
             margin-bottom: 20px;
-            color: #ffc107; /* Yellow color */
+            color: #78ce67; /* Yellow color */
         }
 
         .title {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            color: #ffc107; /* Yellow color */
+            color: #78ce67; /* Yellow color */
         }
 
         .subtitle {
             font-size: 1.2rem;
             margin-bottom: 30px;
             color: #fff;
+        }
+        .ordem{
+            display: flex;
+        }
+        .disordem {
+        background-color: #78ce67;
+        font-family: sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        }
+
+        .b99 {
+        background-color: #222;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        width: 800px;
+        }
+
+        h1 {
+        color: #FFF;
+        font-size: 3em;
+        margin-bottom: 20px;
+        }
+
+        p {
+        color: #FFF;
+        font-size: 1.2em;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        }
+
+        .box {
+        background-color: #333;
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 20px;
+        color: #FFF;
+        }
+
+        .box h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        }
+
+        .box p {
+        font-size: 1em;
         }
 </style>
 
@@ -217,7 +269,7 @@
             <h1>Bem-vindo à nossa página de</h1>
             <h1>educação financeira</h1>
             <p class="tts">Desvende o poder do conhecimento financeiro e alcance seus objetivos.</p>
-            <button>Comece agora</button>
+            <a href="../php/cadastro.php">Começar agora</a>
         </div>
         <h1 class="ccc">Entendendo as Finanças Pessoais</h1>
         <p class="aaa">Domine suas finanças pessoais com o conhecimento necessário para tomar decisões inteligentes e alcançar a segurança financeira.</p>
@@ -241,55 +293,56 @@
         <h1>Investimentos e Poupança</h1>
         <p>Cresça seu patrimônio e garanta um futuro financeiro mais seguro.</p>
 
-    
-        <div class="box">
-            <div class="step">
-                <h2>1</h2>
-            </div>
-            <h2>Poupança</h2>
-            <p>Crie o hábito de guardar dinheiro regularmente e evite gastos impulsivos.</p>
-        </div>
-        <div class="box">
-            <div class="step">
-                <h2>2</h2>
-            </div>
-            <h2>Investimentos</h2>
-            <p>Explore diferentes tipos de investimentos, como renda fixa, renda variável e fundos imobiliários.</p>
-        </div>
-        <div class="box">
-            <div class="step">
-                <h2>3</h2>
-            </div>
-            <h2>Diversificação</h2>
-            <p>Distribua seu dinheiro em diferentes investimentos para reduzir o risco e aumentar o potencial de retorno.</p>
-        </div>
-
-        <div class="title">Investimentos e Poupança</div>
-        <div class="subtitle">Cresça seu patrimônio e garanta um futuro financeiro mais seguro.</div>
-
-        <div class="box">
-            <div class="number">1</div>
-            <h2>Poupança</h2>
-            <p>Crie o hábito de guardar dinheiro regularmente e evite gastos impulsivos.</p>
-        </div>
-        <div class="box">
-            <div class="number">2</div>
-            <h2>Investimentos</h2>
-            <p>Explore diferentes tipos de investimentos, como renda fixa, renda variável e fundos imobiliários.</p>
-        </div>
-        <div class="box">
-            <div class="number">3</div>
-            <h2>Diversificação</h2>
-            <p>Distribua seu dinheiro em diferentes investimentos para reduzir o risco e aumentar o potencial de retorno.</p>
-        </div>
-
         
+        <div class="ordem">
+            <div class="box">
+                <div class="number">1</div>
+                <h2>Poupança</h2>
+                <p>Crie o hábito de guardar dinheiro regularmente e evite gastos impulsivos.</p>
+            </div>
+            <div class="box">
+                <div class="number">2</div>
+                <h2>Investimentos</h2>
+                <p>Explore diferentes tipos de investimentos, como renda fixa, renda variável e fundos imobiliários.</p>
+            </div>
+            <div class="box">
+                <div class="number">3</div>
+                <h2>Diversificação</h2>
+                <p>Distribua seu dinheiro em diferentes investimentos para reduzir o risco e aumentar o potencial de retorno.</p>
+            </div>
+        </div>
+
 
 
 
 
 
     </div>
+    <br>
+    <div class="disordem">
+        
+        <div class="b99">
+            <h1>Planejamento orçamentário</h1>
+            <p>Organize suas finanças de forma eficiente e controle seus gastos.</p>
+            <div class="ordem">
+            <div class="box">
+                <h2>Controle de Gastos</h2>
+                <p>Monitore seus gastos diários, semanais e mensais para identificar áreas de melhoria.</p>
+                </div>
+            
+                <div class="box">
+                <h2>Metas Financeiras</h2>
+                <p>Defina metas realistas e trace um plano para alcançá-las, como comprar um imóvel ou viajar.</p>
+                </div>
+            
+                <div class="box">
+                <h2>Economia</h2>
+                <p>Crie o hábito de guardar dinheiro para imprevistos, alcançar metas de longo prazo ou investir.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Cookie Consent Banner -->
     <div id="cookie-consent-banner" class="cookie-consent-banner">
         <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a
