@@ -18,7 +18,7 @@
   }
 body{
     min-height: 100vh;
-    background: linear-gradient(#000000,#070808,#0c551a,#1baa38);
+    background: black;
     color: var(--text-color)
 }
 header{
@@ -159,13 +159,13 @@ section{
 
 }
 
-/* pagina do sobre */
+
 
 .container{
     padding-top: 80px;
     padding-left: 50px;
     background-color: linear-fg;
-    display: flex;
+
     align-items: center;
     justify-content: space-between;
 }
