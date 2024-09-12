@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/07/2024 às 19:12
+-- Tempo de geração: 13/09/2024 às 00:24
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -32,6 +32,25 @@ CREATE TABLE `aplicativo` (
   `link` varchar(255) NOT NULL,
   `descricao` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `capitulo_um`
+--
+
+CREATE TABLE `capitulo_um` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `link` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `capitulo_um`
+--
+
+INSERT INTO `capitulo_um` (`id`, `nome`, `link`) VALUES
+(1, 'teste1', 'https://www.youtube.com/watch?v=4_sOJjYyJrw');
 
 -- --------------------------------------------------------
 
@@ -79,7 +98,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nome`, `senha`, `email`, `cartao`, `conhecimento`, `renda_mensal`, `valor_final`) VALUES
 (1, 'Gabriel', '159784', '', '', '', 0, 0),
-(9, 'Gabriel Rodrigues Rolim ', '$2y$10$m3tmPacNtWMSmRhdFjVdie.IJ.VUb/1gh/99N7UmwK0bR6IHjJvbK', 'rolim8096@gmail.com', 'débito', 'básico', 1550, 300);
+(9, 'Gabriel Rodrigues Rolim ', '$2y$10$m3tmPacNtWMSmRhdFjVdie.IJ.VUb/1gh/99N7UmwK0bR6IHjJvbK', 'rolim8096@gmail.com', 'débito', 'básico', 8000, 3000);
 
 -- --------------------------------------------------------
 
@@ -111,6 +130,12 @@ ALTER TABLE `aplicativo`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices de tabela `capitulo_um`
+--
+ALTER TABLE `capitulo_um`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -137,6 +162,12 @@ ALTER TABLE `video`
 --
 ALTER TABLE `aplicativo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `capitulo_um`
+--
+ALTER TABLE `capitulo_um`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
