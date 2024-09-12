@@ -541,9 +541,9 @@ $conn->close();
 
     <br><br>
     <!-- Profile Completion Warning -->
-    <div id="profile-warning" class="profile-warning">
+    <!-- <div id="profile-warning" class="profile-warning">
         <p>Seu perfil não está completo. <a href="editar_perfil.php">Complete seu perfil agora</a>.</p>
-    </div>
+    </div> -->
 
 
     <!-- Cookie Consent Banner -->
@@ -592,16 +592,7 @@ $conn->close();
 
 
         // Verifique se o perfil está completo
-        function checkProfileCompletion() {
-            // Lógica para verificar se o perfil está completo
-            // Exemplo simples: verificar uma variável (ou você pode usar uma chamada AJAX para verificar isso no servidor)
-            var profileComplete = false; // Substitua esta variável pela sua lógica de verificação
-
-            if (!profileComplete) {
-                document.getElementById('profile-warning').style.display = 'block';
-            }
-        }
-
+     
         // Execute a função quando a página carregar
         window.onload = checkProfileCompletion;
         
