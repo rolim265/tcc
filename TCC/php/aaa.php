@@ -27,10 +27,180 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../csss/aaap.css">
 
     <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos gerais do corpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e2e2e; /* Fundo preto */
+            color: #e0e0e0; /* Texto claro */
+            line-height: 1.6;
+        }
+
+        header {
+ /* Fundo do cabeçalho escuro */
+            max-height: 98px;
+            max-width: 100vw;
+            top: 0;
+            right: 0;
+            z-index: 1000 ;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #000000;
+            padding: 28px 12%;
+            transition: all .50s ease;
+        }
+
+        .logo img {
+            height: 65px;
+        }
+
+        .navbar {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: #e0e0e0;
+            text-decoration: none;
+        }
+
+        .navbar a.active {
+            border-bottom: 2px solid #51df2d; /* Verde fresco */
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: #32CD32; /* Verde fresco */
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropbtn:hover {
+            background-color: #1e8e3e; /* Verde escuro */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #51df2d; /* Fundo escuro */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            min-width: 160px;
+            z-index: 1;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #333;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #1e8e3e;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #121212; /* Fundo escuro */
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #333;
+            width: 80%;
+            color: #e0e0e0; /* Texto claro */
+        }
+
+        .close {
+            color: #e0e0e0; /* Texto claro */
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ffffff; /* Texto branco */
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        .cookie-consent-banner p {
+            margin: 0;
+        }
+
+        .cookie-consent-banner a {
+            color: #32CD32; /* Verde fresco */
+            text-decoration: underline;
+        }
+
+        .cookie-consent-banner button {
+            background-color: #32CD32; /* Verde fresco */
+            border: none;
+            color: #121212; /* Fundo preto */
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
         .ola {
             align-items: center;
             justify-content: space-between;
@@ -39,7 +209,9 @@ $conn->close();
             padding-left: 80px;
             border-radius: 8px;
             margin-top: 130px;
+            color: #e0e0e0; /* Texto claro */
         }
+
         .vad {
             display: flex;
             align-items: center;
@@ -63,333 +235,52 @@ $conn->close();
             flex: 1;
             margin-right: 6px;
             margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.5;
-            color: white;
+            color: #e0e0e0; /* Texto claro */
         }
 
-        /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");
-
-        .profile-dropdown {
-            position: relative;
-            width: fit-content;
-        }
-
-        .profile-dropdown-list {
-            padding: 2rem;
-            position: absolute;
-            top: 64px;
-            width: 220px;
-            right: 0;
-            background-color: #29fd53;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .profile-img {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            background-size: cover;
-        }
-
-        .profile-dropdown-bnt {
-            display: flex;
-            width: 150px;
-            align-items: center;
-            justify-content: space-between;
-            padding-right: 1rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid rgb(2, 2, 2);
-            border-radius: 50px;
-            cursor: pointer;
-        }
-
-        .profile-dropdown-bnt:hover {
-            background-color: #29fd53;
-        }
-
-        .profile-img i {
-            position: absolute;
-            right: 0;
-            bottom: 0.3rem;
-            font-size: 0.5rem;
-            color: green;
-        }
-
-        .profile-dropdown-bnt span {
-            margin: 0 0.5rem;
-            margin-right: 0;
-        }
-
-        .profile-dropdown-list-item {
-            padding: 0.5rem 0 0.5rem 1rem;
-            transition: background-color 0.2s, padding-left 0.2s;
-        }
-
-        .profile-dropdown-list-item:hover {
-            padding-left: 1.5rem;
-            background-color: #1e8e3e;
-        }
-
-        .profile-dropdown-list-item a {
-            padding-right: 0.8rem;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #fff;
-        }
-
-        .profile-dropdown-list-item a i {
-            margin-right: 1rem;
-            font-size: 1.1rem;
-            width: 2.3rem;
-            height: 2.3rem;
-            background-color: #29fd53;
-            color: white;
-            line-height: 2.3;
+        .services {
             text-align: center;
-            padding-left: 0.5rem;
-            padding-right: 1rem;
-            border-radius: 10%;
+            padding: 50px 0;
         }
 
-        .profile-dropdown-list.active {
-            max-height: 500px;
+        .services h2 {
+            color: #e0e0e0; /* Texto claro */
+            margin-bottom: 30px;
         }
 
-        .profile-dropdown-list hr {
-            margin: 0 0.5rem;
-            margin-right: 0;
-        } */
-        /* Reset básico */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Import da fonte Poppins (descomente se necessário) */
-        /*@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap");*/
-
-        /* Estilos do dropdown */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropbtn {
-            background-color: #32CD32;
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .dropbtn:hover {
-            background-color: #1e8e3e;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #32CD32;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            min-width: 160px;
-            z-index: 1;
-            padding: 10px 0;
-        }
-
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.9rem;
-            transition: background-color 0.2s, padding-left 0.2s;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #1e8e3e;
-            padding-left: 20px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #1e8e3e;
-        }
-
-
-
-
-        /* Estilos para o modal */
-        .modal {
-            display: none;
-            /* Oculto por padrão */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            /* Fallback */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Fundo preto com opacidade */
-        }
-
-        .modal-content {
-            background-color: black;
-            margin: 15% auto;
-            /* 15% do topo e centralizado horizontalmente */
+        .service-card {
+            background-color: #1f1f1f; /* Fundo escuro */
             padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            /* Pode ser ajustado */
+            margin: 10px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            color: #e0e0e0; /* Texto claro */
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+        .service-card h3 {
+            margin-bottom: 10px;
         }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        .service-card p {
+            margin-bottom: 15px;
         }
 
-
-
-
-        /* Estilos para o Modal */
-        .modal {
-            display: none;
-            /* Oculto por padrão */
-            position: fixed;
-            /* Fica fixo na tela */
-            z-index: 1;
-            /* Fica na frente de outros elementos */
-            left: 0;
-            top: 0;
-            width: 100%;
-            /* Largura total */
-            height: 100%;
-            /* Altura total */
-            overflow: auto;
-            /* Habilita rolagem se necessário */
-            background-color: rgb(0, 0, 0);
-            /* Cor de fundo */
-            background-color: rgba(0, 0, 0, 0.4);
-            /* Fundo com transparência */
-
-        }
-
-        .modal-content {
-            background-color: black;
-            margin: 15% auto;
-            /* 15% do topo e centralizado horizontalmente */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            /* Largura do modal */
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .cookie-consent-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            z-index: 1000;
-        }
-
-        .cookie-consent-banner p {
-            margin: 0;
-        }
-
-        .cookie-consent-banner a {
-            color: #ffdd57;
-            text-decoration: underline;
-        }
-
-        .cookie-consent-banner button {
-            background-color: #ffdd57;
-            border: none;
-            color: #333;
+        .service-card .btn {
+            background-color: #32CD32; /* Verde fresco */
+            color: #121212; /* Fundo preto */
             padding: 10px 20px;
-            cursor: pointer;
-            margin-top: 10px;
+            text-decoration: none;
+            border-radius: 5px;
         }
 
-
-
-
-        .profile-warning {
-            display: none;
-            /* Inicialmente escondido */
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #f44336;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            z-index: 1000;
-        }
-
-        .profile-warning p {
-            margin: 0;
-        }
-
-        .profile-warning a {
-            color: #ffdd57;
-            text-decoration: underline;
+        .service-card .btn:hover {
+            background-color: #1e8e3e; /* Verde escuro */
         }
     </style>
 
 </head>
 
 <body>
-
-
 
     <header>
         <a href="#" class="logo"><span><img src="../img/logocoffe.png" alt="" style="height: 65px;"></span></a>
@@ -418,139 +309,52 @@ $conn->close();
                 <div id="modal-body"></div>
             </div>
         </div>
-
-
-    </header>
-
-
-
-    
     </header>
 
     <!-- Início dos textos -->
-     
     <div class="ola">
         <h1 id="typing-text">Olá caro(a) <?php echo $nome; ?>! É com muito prazer te recebermos aqui!</h1>
-
     </div>
 
-
     <div class="vad">
-        
         <img src="../img/familia01.jpg" alt="Descrição da Imagem">
         <p>
-
             Antes de começar essa jornada, vamos retomar um pouco sobre nosso objetivo principal, sendo necessário que você entenda o que é de fato a Educação Financeira.
             A Educação Financeira te auxilia a organizar planos para o futuro, também ajuda a administrar contas, finanças e investimentos... Onde você entende como o dinheiro funciona e como realizar ações de maneira inteligente.
             Nesse site você terá acesso a aulas, juntamente com quiz e um conteúdo fácil de aprender!
-
-        </p>
-    </div>
-    <h2> O que são Investimentos?</h2>
-    <div class="vad">
-
-        <p>
-        
-        Investimentos são ações, fundos, ou outros instrumentos financeiros que são utilizados para gerar retorno para o investidor.
-        Estes podem ser diversificados, como ações, fundos, ou ativos diretos.
-        Investir significa aplicar seu recurso financeiro com o intuito de receber uma quantia maior futuramente, como uma meta.
-        Para investir, é necessário compreender como funciona os tipos de investimentos, para assim escolher qual se encaixa na sua realidade
-
-        </p>
-        <img src="../img/g1_endividados.png" alt="Descrição da Imagem">
-        <!-- https://g1.globo.com/economia/noticia/2022/03/31/endividamento-bate-recorde-em-marco-puxado-pelo-cartao-de-credito-diz-cnc.ghtml -->
-    </div>
-    <div class="vad">
-        <img src="../img/quanto+.jpg" alt="Descrição da Imagem">
-        <p>
-            Como fazer um orçamento pessoal
-            O que é um orçamento pessoal?
-            Um orçamento pessoal é uma espécie de mapa do tesouro financeiro que te ajuda a prever o que você vai gastar e a manter as suas finanças em ordem. A ideia é fazer as suas despesas baterem com o que você ganha, para não acabar gastando mais do que pode.
-
-            Fazer esse planejamento todo mês é tipo a sua bússola financeira. Ele te mostra quais são os gastos que mais afetam a sua carteira, te ajuda a entender como você gasta o seu dinheiro no dia a dia, e até te prepara para quando as coisas não saem como o planejado.
-
-            Além disso, é uma forma de você ficar mais esperto com o dinheiro, aprendendo a tomar decisões melhores.
-
-            O lado legal de ter um orçamento é que ele te ajuda a manter tudo organizado. Você sabe onde tá o seu dinheiro e pode decidir o melhor momento para gastar, evitando despesas que não são tão importantes e problemas que poderiam surgir.
-
-            E o melhor? Você começa a ver os seus sonhos se tornando realidade. Quer fazer uma viagem, comprar um carro ou ter a sua própria casa? Com as finanças organizadas, você está mais perto de conseguir essas coisas.
-            Como fazer um orçamento mensal eficiente em passos simples
-            1. Entenda o que entra e sai
-            Pode parecer básico, mas muita gente não sabe direito quanto ganha por mês. Então, o primeiro passo é somar e anotar todas as suas entradas de dinheiro e despesas. Assim, você já consegue ver o quanto ganha e onde gasta mais.
-
-            2. Separe as despesas
-            Depois de ver o panorama geral, é hora de detalhar as coisas. Liste todas as suas despesas fixas e variáveis:
-            Despesas fixas: Coisas que custam mais ou menos a mesma coisa todo mês, como aluguel, academia, prestação do carro, salários de funcionários, etc.
-            Despesas variáveis: Coisas que podem mudar de valor, como comida, conta de luz, presentes, viagens, etc.
-            Não esqueça das despesas "invisíveis", que são aquelas pequenas que somam sem você perceber, como assinaturas, pedidos de comida e serviços de streaming.
-
-            3. Organize por categorias
-            Agora que você separou as despesas, é hora de colocá-las em categorias e decidir quanto pode gastar por semana e mês em cada uma. Algumas categorias podem ser:
-            Supermercado;
-            Educação;
-            Moradia;
-            Lazer, etc.
-            Lembre-se de que não tem uma regra fixa para o quanto gastar em cada categoria, use o bom senso para decidir de acordo com a sua situação.
-
-            4. Poupe dinheiro
-            Definir um orçamento para cada categoria ajuda a pensar em como economizar e ter mais dinheiro no fim do mês. Veja onde você pode cortar gastos ou gastar menos.
-
-            5. Use o cartão com cuidado
-            Um erro comum é achar que o cartão de crédito é dinheiro extra, mas na verdade é só um adiantamento. Então, certifique-se de que os gastos no cartão não passam do limite que você definiu no orçamento. Usado direito, o cartão pode ajudar nas finanças.
-
-            6. Defina metas claras
-            Organizar as finanças sem um objetivo em mente não faz muito sentido. Pergunte a si mesmo: "Por que estou economizando? Quais despesas são essenciais na minha vida?" Essas perguntas lembram você do motivo de estar fazendo tudo isso. Defina metas de economia para se comprometer ainda mais com o orçamento.
-
-            7. Acabe com as dívidas
-            Dívidas atrapalham o planejamento financeiro. Se você tem dívidas, organize-se para pagá-las e aproveitar todos os benefícios do orçamento pessoal.
         </p>
     </div>
 
-    <!-- Início dos Serviços -->
-    <section class="services">
-        <h2>Faça parte de nossa comunidade</h2>
-        <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "tcc";
+    <div class="services">
+        <h2>O que são Investimentos?</h2>
+        <div class="service-card">
+            <h3>Ações</h3>
+            <p>Investir em ações de empresas com bom histórico e potencial de crescimento pode resultar em grandes retornos. Considere diversificar entre setores e empresas.</p>
+            <!-- <a href="#" class="btn">Saiba mais</a> -->
+        </div>
+        <div class="service-card">
+            <h3>Fundos Imobiliários (FIIs)</h3>
+            <p> Esses fundos permitem investir em imóveis comerciais e residenciais sem precisar comprá-los diretamente, oferecendo renda passiva e potencial valorização.</p>
+            <!-- <a href="#" class="btn">Saiba mais</a> -->
+        </div>
+        <div class="service-card">
+            <h3>Fundos de Índice (ETFs)</h3>
+            <p>ETFs acompanham índices de mercado, oferecendo uma forma diversificada de investir em ações, títulos e outros ativos.</p>
+            <!-- <a href="#" class="btn">Saiba mais</a> -->
+        </div>
+        <div class="service-card">
+            <h3>Títulos de Renda Fixa</h3>
+            <p>  Investir em títulos como Tesouro Direto, CDBs e Debêntures pode proporcionar uma renda fixa e previsível com menor risco.</p>
+            <!-- <a href="#" class="btn">Saiba mais</a> -->
+        </div>
+        <!-- Adicione mais cards conforme necessário -->
+    </div>
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT * FROM produtos";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-
-                echo '<div class="service-card">';
-                echo '<h3>' . $row["nome"] . '</h3>';
-                echo '<p>' . $row["descricao"] . '</p>';
-                echo '<a href="' . $row["link"] . '" class="btn">Comprar por R$ ' . $row["valor"] . '</a>';
-                echo '</div>';
-            }
-        } else {
-            echo "0 results";
-        }
-        $conn->close();
-        ?>
-    </section>
-
-    <br><br>
-    <!-- Profile Completion Warning -->
-    <!-- <div id="profile-warning" class="profile-warning">
-        <p>Seu perfil não está completo. <a href="editar_perfil.php">Complete seu perfil agora</a>.</p>
+    <!-- Banner de Consentimento de Cookies
+    <div class="cookie-consent-banner" id="cookieConsentBanner">
+        <p>Este site usa cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="#">Política de Privacidade</a>.</p>
+        <button onclick="acceptCookies()">Aceitar</button>
     </div> -->
-
-
-    <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner" class="cookie-consent-banner">
-        <p>Este site usa cookies para garantir que você obtenha a melhor experiência. <a href="https://support.google.com/chrome/answer/95647?hl=pt-BR&co=GENIE.Platform%3DAndroid&sjid=13859596838440895859-SA">Saiba mais</a>.</p>
-        <button id="cookie-consent-button">Entendi</button>
-    </div>
 
     <script>
         // Função para abrir/fechar o dropdown
@@ -611,8 +415,6 @@ $conn->close();
         typeText();
     
     </script>
-
-
 </body>
 
 </html>

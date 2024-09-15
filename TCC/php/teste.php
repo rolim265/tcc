@@ -118,8 +118,7 @@ if (isset($_SESSION['id'])) {
 
 
         header {
-            
-            max-height: 100px;
+            max-height: 45px;
             max-width: 100vw;
             top: 0;
             right: 0;
@@ -155,11 +154,12 @@ if (isset($_SESSION['id'])) {
         }
 
         .navbar a.active {
+            border-bottom: 2px solid #51df2d;
         }
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #333;
+            background-color: #51df2d;
             min-width: 160px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             border-radius: 5px;
@@ -207,7 +207,7 @@ if (isset($_SESSION['id'])) {
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #333;
+            background-color: ##51df2d;
             min-width: 160px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             border-radius: 5px;
@@ -612,11 +612,11 @@ if (isset($_SESSION['id'])) {
 
 <body>
     <header>
-        <a href="#" class="logo"><img src="../img/logocoffe.png" alt="Logo"></a>
+        <a href="#" class="logo"><span><img src="../img/logocoffe.png" alt="" style="height: 65px;"></span></a>
         <ul class="navbar">
-            <li><a href="../php/aaa.php" class="active">Início</a></li>
+            <li><a href="../php/aaa.php" >Início</a></li>
             <li><a href="../html/sobre.html">Sobre</a></li>
-            <li><a href="aulas.php">Vídeos Aulas</a></li>
+            <li><a href="aulas.php" class="active">Vídeos Aulas</a></li>
             <li><a href="#">Contato</a></li>
         </ul>
         <div class="dropdown">
@@ -915,6 +915,61 @@ if (isset($_SESSION['id'])) {
             }, 1250 );
             }
         });
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownContent");
+            dropdownContent.classList.toggle("show");
+        }
+
+        // Quando o usuário clicar no botão de edição, carrega o modal com os dados do usuário
+        document.getElementById('editBtn').onclick = function() {
+            const userId = <?php echo $id; ?>; // Assumindo que o ID do usuário está disponível no PHP
+
+            // Faz uma requisição AJAX para carregar os dados do usuário
+            fetch('editar_perfil.php?id=' + userId)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('modal-body').innerHTML = data;
+                    document.getElementById('editModal').style.display = "block";
+                });
+        }
+
+        // Quando o usuário clicar em <span> (x), fecha o modal de edição
+        document.getElementsByClassName('close')[0].onclick = function() {
+            document.getElementById('editModal').style.display = "none";
+        }
+
+        // Quando o usuário clicar em qualquer lugar fora do modal de edição, fecha o modal de edição
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('editModal')) {
+                document.getElementById('editModal').style.display = "none";
+            }
+        }
+
+        // Quando o usuário clica no botão de entendi do banner de cookies, fecha o banner
+        document.getElementById('cookie-consent-button').addEventListener('click', function() {
+            document.getElementById('cookie-consent-banner').style.display = 'none';
+            // Você pode adicionar código para definir um cookie aqui, se desejar
+        });
+
+
+        // Verifique se o perfil está completo
+     
+        // Execute a função quando a página carregar
+        window.onload = checkProfileCompletion;
+        
+        const textElement = document.getElementById('typing-text');
+        const text = "";
+        let index = 0;
+
+        function typeText() {
+            if (index < text.length) {
+                textElement.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeText, 100); // Ajuste o tempo para mais rápido ou mais lento
+            }
+        }
+
+        typeText();
     </script>
 </body>
 
