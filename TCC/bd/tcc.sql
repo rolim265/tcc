@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/09/2024 às 00:24
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Tempo de geração: 15/09/2024 às 17:44
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,21 +36,49 @@ CREATE TABLE `aplicativo` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura para tabela `capitulo`
+--
+
+CREATE TABLE `capitulo` (
+  `id` int(11) NOT NULL,
+  `pergunta` text DEFAULT NULL,
+  `resposta` text DEFAULT NULL,
+  `video_url` varchar(255) DEFAULT NULL,
+  `video_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `capitulo`
+--
+
+INSERT INTO `capitulo` (`id`, `pergunta`, `resposta`, `video_url`, `video_id`) VALUES
+(1, NULL, NULL, 'https://www.youtube.com/watch?v=VpDvjftqeQA', NULL),
+(2, 'Quem faz o boombap perfeito?', 'Grafiteh', 'https://www.youtube.com/watch?v=VpDvjftqeQA', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura para tabela `capitulo_um`
 --
 
 CREATE TABLE `capitulo_um` (
   `id` int(11) NOT NULL,
-  `nome` varchar(50) NOT NULL,
-  `link` varchar(255) NOT NULL
+  `nome` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `pergunta` text NOT NULL,
+  `resposta` text NOT NULL,
+  `alternativa_errada1` text NOT NULL,
+  `alternativa_errada2` text NOT NULL,
+  `alternativa_errada3` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `capitulo_um`
 --
 
-INSERT INTO `capitulo_um` (`id`, `nome`, `link`) VALUES
-(1, 'teste1', 'https://www.youtube.com/watch?v=4_sOJjYyJrw');
+INSERT INTO `capitulo_um` (`id`, `nome`, `link`, `pergunta`, `resposta`, `alternativa_errada1`, `alternativa_errada2`, `alternativa_errada3`) VALUES
+(1, 'Boombap', 'https://www.youtube.com/watch?v=VpDvjftqeQA', 'Quem fez o boombap perfeito?', 'Grafith', 'Prado', 'Jotape', 'Kant'),
+(2, 'Java', 'https://www.youtube.com/watch?v=ZBKxhnqX-Q0', 'Quem é o professor?', 'Guanabara', 'Jesus', 'Anderson', 'Cintia Pinho');
 
 -- --------------------------------------------------------
 
@@ -98,7 +126,10 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nome`, `senha`, `email`, `cartao`, `conhecimento`, `renda_mensal`, `valor_final`) VALUES
 (1, 'Gabriel', '159784', '', '', '', 0, 0),
-(9, 'Gabriel Rodrigues Rolim ', '$2y$10$m3tmPacNtWMSmRhdFjVdie.IJ.VUb/1gh/99N7UmwK0bR6IHjJvbK', 'rolim8096@gmail.com', 'débito', 'básico', 8000, 3000);
+(9, 'Gabriel Rodrigues Rolim ', '$2y$10$m3tmPacNtWMSmRhdFjVdie.IJ.VUb/1gh/99N7UmwK0bR6IHjJvbK', 'rolim8096@gmail.com', 'débito', 'básico', 8000, 3000),
+(10, 'miguel', '$2y$10$PXI1.Qp3wNpy/bFWLtTRGuOTgpDLcE2j10jS47rt.afOL27bsoHlO', 'breno@gmail.com', '', '', 0, 0),
+(11, 'miguel', '$2y$10$V8AdTAN6Y54L8GcAlReBiePd2safcEyvHG7p5RKjq4p5IwF5W6PnK', 'bre@gmail.com', '', '', 0, 0),
+(12, 'Triste', '$2y$10$.3B5Xtd/GE22DOF3S4gd4OJfb3Jw0QtEnGhNqpRXeaXulHXUccqL.', 'triste@gmail.com', '', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -127,6 +158,12 @@ INSERT INTO `video` (`id`, `titulo`, `link`) VALUES
 -- Índices de tabela `aplicativo`
 --
 ALTER TABLE `aplicativo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `capitulo`
+--
+ALTER TABLE `capitulo`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -164,10 +201,16 @@ ALTER TABLE `aplicativo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `capitulo`
+--
+ALTER TABLE `capitulo`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `capitulo_um`
 --
 ALTER TABLE `capitulo_um`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -179,7 +222,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `video`
