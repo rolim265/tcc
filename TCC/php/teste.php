@@ -22,6 +22,30 @@ if (isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jornada de Aprendizagem</title>
+    <script>
+        function handleButtonClick(perValue) {
+            // Envia o valor para o servidor via AJAX
+            fetch('update_per.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'set_per': perValue
+                })
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Opcional: manipular a resposta do servidor
+                console.log(data);
+                // Atualiza o conteúdo da página ou realiza outras ações
+                document.getElementById('perguntas').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+            });
+        }
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,15 +53,84 @@ if (isset($_SESSION['id'])) {
             padding: 0;
             background-color: #2e2e2e;
             color: #f5f5f5;
+            width: 100%;
+            max-width: 100vw;
+        }
+        .navbar{
+            display: flex;
+
+        }
+        .navbar a{
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 5px 0;
+            margin: 0px 30px;
+            transition: all .50s ease;
+
+        }
+        .navbar a:hover{
+            color: var(--main-color);
+
+        }
+        @media (max-width: 1280px){
+            header{
+                padding: 14px 2%;
+                transition: .2s;
+
+            }
+            .navbar a{
+                padding: 5px 0;
+                margin: 0px 20px;
+            }
+        }
+        @media (max-width: 1090px){
+            #menu-icon{
+                display: block;
+            }
+            .navbar{
+                
+
+
+            }
+            .navbar a{
+                display: block;
+                margin: 12px 0;
+                padding: 0px 25px;
+                transition: all .50s ease;
+                
+                
+            }
+            .navbar a:houver{
+                color: var(--text-color);
+                transform: translateY(5px);
+
+            }
+            .navbar a.active{
+                color: var(--text-color);
+
+            }
+            .navbar.open{
+                right: 2%;
+            }
+
         }
 
+
         header {
-            background-color: #333;
-            padding: 10px;
+            
+            max-height: 100px;
+            max-width: 100vw;
+            top: 0;
+            right: 0;
+            z-index: 1000 ;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            color: #f5f5f5;
+            justify-content: space-between;
+            background-color: #000000;
+            padding: 28px 12%;
+            transition: all .50s ease;
+        
         }
 
         .logo img {
@@ -62,10 +155,34 @@ if (isset($_SESSION['id'])) {
         }
 
         .navbar a.active {
-            text-decoration: underline;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            z-index: 1;
+            padding: 10px 0;
         }
 
-        .dropdown {
+        .dropdown-content a {
+            color: #f5f5f5;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdownvideo {
             position: relative;
             display: inline-block;
         }
@@ -109,7 +226,32 @@ if (isset($_SESSION['id'])) {
             background-color: #555;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdownvideo:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            z-index: 1;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            color: #f5f5f5;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .dropdownvideo:hover .dropdown-content {
             display: block;
         }
 
@@ -380,6 +522,91 @@ if (isset($_SESSION['id'])) {
                 margin-bottom: 20px;
             }
         }
+        .perguntas-container {
+            display: none; /* Inicialmente escondido */
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        $green: #1ECD97;
+        $gray: #bbbbbb;
+        * {
+        font-family: 'Roboto', sans-serif;
+        }
+        .troso {
+        position: absolute;
+        top:50%;
+        left:50%;
+        margin-left: -65px;
+        margin-top: -20px;
+        width: 130px;
+        height: 40px;
+        text-align: center;
+        }
+        .barrasebarras {
+        outline:none;
+        height: 40px;
+        text-align: center;
+        width: 130px;
+        border-radius:40px;
+        background: #fff;
+        border: 2px solid $green;
+        color:$green;
+        letter-spacing:1px;
+        text-shadow:0;
+        font:{
+            size:12px;
+            weight:bold;
+        }
+        cursor: pointer;
+        transition: all 0.25s ease;
+        &:hover {
+            color:white;
+            background: $green;
+        }
+        &:active {
+            //letter-spacing: 2px;
+            letter-spacing: 2px ;
+        }
+        &:after {
+            content:"SUBMIT";
+        }
+        }
+        .onclic {
+        width: 40px;
+        border-color:$gray;
+        border-width:3px;
+        font-size:0;
+        border-left-color:$green;
+        animation: rotating 2s 0.25s linear infinite;
+
+        &:after {
+            content:"";
+        }
+        &:hover {
+            color:$green;
+            background: white;
+        }
+        }
+        .validate {
+        font-size:13px;
+        color: white;
+        background: $green;
+        &:after {
+            font-family:'FontAwesome';
+            content:"\f00c";
+        }
+        }
+
+        @keyframes rotating {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+        }
     </style>
 </head>
 
@@ -420,13 +647,97 @@ if (isset($_SESSION['id'])) {
             </div>
 
             <!-- Capítulo 1 -->
-            <div class="dropdown">
-                <div class="journey-item">
-                    <button class="button-50" role="button">Capítulo 1</button>
-                </div>
+            <div class="dropdownvideo">
+                <form method="post" action="">
+                    <div class="journey-item">
+                        <button class="button-50" role="button" type="submit" name="set_per" value="1">Capítulo 1</button>
+                    </div>
+                </form>
                 <div class="dropdown-content">
                     <?php
-                    $sql = "SELECT * FROM capitulo_um";
+                    if (isset($_POST['set_per'])) {
+                        // A variável $per recebe o valor enviado pelo botão clicado
+                        $capitulo_id = intval($_POST['set_per']);
+                        
+                    } else {
+                        
+                    }
+                    $sql = "SELECT * FROM capitulo_um WHERE id = 1";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        echo '<div class="video-list">';
+                        while ($row = $result->fetch_assoc()) {
+                            $videoUrl = htmlspecialchars($row["link"], ENT_QUOTES, 'UTF-8');
+                            $videoId = getYoutubeVideoId($videoUrl);
+
+                            $thumbnailUrl = $videoId ? 'https://img.youtube.com/vi/' . $videoId . '/hqdefault.jpg' : '../img/default-thumbnail.jpg';
+
+                            // Não usar <a href> para evitar redirecionamento
+                            
+                            echo '<div class="video-item2">';
+                            echo '<img src="' . $thumbnailUrl . '" alt="' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '">';
+                            echo '<button class="button-85" role="button" type="submit" name="set_per" value="1" onclick="loadVideo(\'' . $videoId . '\')">' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '</button>';
+                            echo '</div>';
+                        }
+                        echo '</div>';
+                    } else {
+                        echo 'Nenhum vídeo encontrado.';
+                    }
+                    ?>
+                </div>
+                <div id="perguntas" class="perguntas-container">
+                <?php 
+                // Puxar a pergunta e alternativas do banco de dados
+                $sql = "SELECT pergunta, resposta, alternativa_errada1, alternativa_errada2, alternativa_errada3 FROM capitulo_um WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                 // Definir o ID correto do capítulo
+                $stmt->bind_param("i", $capitulo_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<h2 style="font-size: 28px; margin-bottom: 20px; color: #e0e0e0; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">' . htmlspecialchars($row['pergunta'], ENT_QUOTES, 'UTF-8') . '</h2>';
+
+                        $options = [
+                            ['value' => '1', 'text' => htmlspecialchars($row['resposta'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '2', 'text' => htmlspecialchars($row['alternativa_errada1'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '3', 'text' => htmlspecialchars($row['alternativa_errada2'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '4', 'text' => htmlspecialchars($row['alternativa_errada3'], ENT_QUOTES, 'UTF-8')]
+                        ];
+
+                        foreach ($options as $option) {
+                            echo '<div style="margin-bottom: 15px; display: flex; align-items: center; background: linear-gradient(145deg, #333, #444); border-radius: 12px; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); padding: 10px; transition: background 0.3s, box-shadow 0.3s;">';
+                            echo '<input type="radio" name="answer" value="' . $option['value'] . '" id="option' . $option['value'] . '" style="margin-right: 10px; accent-color: #4CAF50; transform: scale(1.2);">';
+                            echo '<label for="option' . $option['value'] . '" style="font-size: 18px; color: #e0e0e0; transition: color 0.3s;">' . $option['text'] . '</label>';
+                            echo '</div>';
+                        }
+
+                        echo '<button onclick="checkAnswer()" style="padding: 12px 24px; border-radius: 8px; background: linear-gradient(145deg, #4CAF50, #388E3C); color: white; border: none; cursor: pointer; font-size: 18px; font-weight: bold; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); transition: background 0.3s, box-shadow 0.3s;">Enviar Resposta</button>';
+                    }
+                } else {
+                    echo 'Nenhuma pergunta disponível para este vídeo.';
+                }
+                ?>
+            </div>
+            </div>
+            <div class="dropdownvideo">
+                <form method="post" action="">
+                    <div class="journey-item">
+                        <button class="button-50" role="button" type="submit" name="set_per" value="2">Capítulo 2</button>
+                    </div>
+                </form>
+                <div class="dropdown-content">
+                    <?php
+                    if (isset($_POST['set_per'])) {
+                        // A variável $per recebe o valor enviado pelo botão clicado
+                        $capitulo_id = intval($_POST['set_per']);
+                        
+                    } else {
+                        
+                    }
+                    $sql = "SELECT * FROM capitulo_um WHERE id = 2";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -449,46 +760,88 @@ if (isset($_SESSION['id'])) {
                     }
                     ?>
                 </div>
-            </div>
+                <div id="perguntas" class="perguntas-container">
+                <?php 
+                
+                // Puxar a pergunta e alternativas do banco de dados
+                $sql = "SELECT pergunta, resposta, alternativa_errada1, alternativa_errada2, alternativa_errada3 FROM capitulo_um WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                 // Definir o ID correto do capítulo
+                $stmt->bind_param("i", $capitulo_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-            <!-- Capítulo 2 -->
-            <div class="dropdown">
-                <div class="journey-item">
-                    <button class="button-50" role="button">Capítulo 2</button>
-                </div>
-                <div class="dropdown-content">
-                    <?php
-                    $sql = "SELECT * FROM video";
-                    $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<h2 style="font-size: 28px; margin-bottom: 20px; color: #e0e0e0; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">' . htmlspecialchars($row['pergunta'], ENT_QUOTES, 'UTF-8') . '</h2>';
 
-                    if ($result->num_rows > 0) {
-                        echo '<div class="video-list">';
-                        while ($row = $result->fetch_assoc()) {
-                            $videoUrl = htmlspecialchars($row["link"], ENT_QUOTES, 'UTF-8');
-                            $videoId = getYoutubeVideoId($videoUrl);
+                        $options = [
+                            ['value' => '1', 'text' => htmlspecialchars($row['resposta'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '2', 'text' => htmlspecialchars($row['alternativa_errada1'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '3', 'text' => htmlspecialchars($row['alternativa_errada2'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '4', 'text' => htmlspecialchars($row['alternativa_errada3'], ENT_QUOTES, 'UTF-8')]
+                        ];
 
-                            $thumbnailUrl = $videoId ? 'https://img.youtube.com/vi/' . $videoId . '/hqdefault.jpg' : 'default-thumbnail.jpg';
-
-                            // Usar o botão para carregar o vídeo no iframe
-                            echo '<div class="video-item2">';
-                            echo '<img src="' . $thumbnailUrl . '" alt="' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '">';
-                            echo '<button class="button-85" role="button" onclick="loadVideo(\'' . $videoId . '\')">' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '</button>';
+                        foreach ($options as $option) {
+                            echo '<div style="margin-bottom: 15px; display: flex; align-items: center; background: linear-gradient(145deg, #333, #444); border-radius: 12px; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); padding: 10px; transition: background 0.3s, box-shadow 0.3s;">';
+                            echo '<input type="radio" name="answer" value="' . $option['value'] . '" id="option' . $option['value'] . '" style="margin-right: 10px; accent-color: #4CAF50; transform: scale(1.2);">';
+                            echo '<label for="option' . $option['value'] . '" style="font-size: 18px; color: #e0e0e0; transition: color 0.3s;">' . $option['text'] . '</label>';
                             echo '</div>';
                         }
+                        echo '<div class="troso">';
+                        echo '<button class="barrasebarras" id="rest" onclick="checkAnswer()" style="padding: 12px 24px; border-radius: 8px; background: linear-gradient(145deg, #4CAF50, #388E3C); color: white; border: none; cursor: pointer; font-size: 18px; font-weight: bold; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); transition: background 0.3s, box-shadow 0.3s;">Enviar Resposta</button>';
                         echo '</div>';
-                    } else {
-                        echo 'Nenhum vídeo encontrado.';
                     }
-                    ?>
-                </div>
+                } else {
+                    echo 'Nenhuma pergunta disponível para este vídeo.';
+                }
+                ?>
+            </div>
             </div>
         </div>
 
         <div class="right-videos">
-            <h2>Seu Cinema</h2>
+
             <div id="cinema">
                 <!-- O vídeo será carregado aqui -->
                 <iframe id="videoPlayer" width="850" height="500" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div id="questionsContainer" style="display: none;">
+                <?php 
+                // Puxar a pergunta e alternativas do banco de dados
+                $sql = "SELECT pergunta, resposta, alternativa_errada1, alternativa_errada2, alternativa_errada3 FROM capitulo_um WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                // Definir o ID correto do capítulo
+                $stmt->bind_param("i", $capitulo_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<h2 style="font-size: 28px; margin-bottom: 20px; color: #e0e0e0; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">' . htmlspecialchars($row['pergunta'], ENT_QUOTES, 'UTF-8') . '</h2>';
+                
+                        // Opções de resposta
+                        $options = [
+                            ['value' => '1', 'text' => htmlspecialchars($row['resposta'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '2', 'text' => htmlspecialchars($row['alternativa_errada1'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '3', 'text' => htmlspecialchars($row['alternativa_errada2'], ENT_QUOTES, 'UTF-8')],
+                            ['value' => '4', 'text' => htmlspecialchars($row['alternativa_errada3'], ENT_QUOTES, 'UTF-8')]
+                        ];
+                
+                        foreach ($options as $option) {
+                            echo '<div style="margin-bottom: 15px; display: flex; align-items: center; background: linear-gradient(145deg, #333, #444); border-radius: 12px; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); padding: 10px; transition: background 0.3s, box-shadow 0.3s;">';
+                            echo '<input type="radio" name="answer" value="' . $option['value'] . '" id="option' . $option['value'] . '" style="margin-right: 10px; accent-color: #4CAF50; transform: scale(1.2);">';
+                            echo '<label for="option' . $option['value'] . '" style="font-size: 18px; color: #e0e0e0; transition: color 0.3s;">' . $option['text'] . '</label>';
+                            echo '</div>';
+                        }
+                
+                        echo '<button onclick="checkAnswer()" style="padding: 12px 24px; border-radius: 8px; background: linear-gradient(145deg, #4CAF50, #388E3C); color: white; border: none; cursor: pointer; font-size: 18px; font-weight: bold; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); transition: background 0.3s, box-shadow 0.3s;">Enviar Resposta</button>';
+                    }
+                } else {
+                    echo 'Nenhuma pergunta disponível para este vídeo.';
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -516,11 +869,52 @@ if (isset($_SESSION['id'])) {
             }
         }
 
-        // Função para carregar o vídeo no iframe
         function loadVideo(videoId) {
             var videoPlayer = document.getElementById('videoPlayer');
             videoPlayer.src = "https://www.youtube.com/embed/" + videoId;
+            
+            // Atualizar a URL com o video_id
+            window.history.pushState({}, '', '?video_id=' + videoId);
+
+            // Mostrar o contêiner de perguntas
+            document.getElementById('questionsContainer').style.display = 'block';
         }
+
+
+        function checkAnswer() {
+            var options = document.getElementsByName('answer');
+            var selectedOption = null;
+
+            for (var i = 0; i < options.length; i++) {
+                if (options[i].checked) {
+                    selectedOption = options[i].value;
+                    break;
+                }
+            }
+
+            if (selectedOption === "1") {
+                alert('Resposta correta!');
+            } else {
+                alert('Resposta incorreta, tente novamente.');
+            }
+        }
+        $(function() {
+        $( "#rest" ).click(function() {
+            $( "#rest" ).addClass( "onclic", 250, validate);
+        });
+
+        function validate() {
+            setTimeout(function() {
+            $( "#rest" ).removeClass( "onclic" );
+            $( "#rest" ).addClass( "validate", 450, callback );
+            }, 2250 );
+        }
+            function callback() {
+            setTimeout(function() {
+                $( "#rest" ).removeClass( "validate" );
+            }, 1250 );
+            }
+        });
     </script>
 </body>
 
@@ -541,5 +935,8 @@ function getYoutubeVideoId($url)
         $video_id = $matches[1];
     }
     return $video_id;
+    parse_str(parse_url($url, PHP_URL_QUERY), $params);
+                        return $params['v'] ?? false;
 }
+
 ?>
