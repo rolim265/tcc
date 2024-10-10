@@ -41,20 +41,18 @@ $conn->close();
         /* Estilos gerais do corpo */
         body {
             font-family: Arial, sans-serif;
-            background-color: #2e2e2e;
-            /* Fundo preto */
-            color: #e0e0e0;
-            /* Texto claro */
+            background-color: #2e2e2e; /* Fundo preto */
+            color: #e0e0e0; /* Texto claro */
             line-height: 1.6;
         }
 
         header {
-            /* Fundo do cabeçalho escuro */
+ /* Fundo do cabeçalho escuro */
             max-height: 98px;
             max-width: 100vw;
             top: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 1000 ;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -82,8 +80,7 @@ $conn->close();
         }
 
         .navbar a.active {
-            border-bottom: 2px solid #51df2d;
-            /* Verde fresco */
+            border-bottom: 2px solid #51df2d; /* Verde fresco */
         }
 
         .dropdown {
@@ -92,8 +89,7 @@ $conn->close();
         }
 
         .dropbtn {
-            background-color: #32CD32;
-            /* Verde fresco */
+            background-color: #32CD32; /* Verde fresco */
             color: white;
             font-size: 0.9rem;
             font-weight: 500;
@@ -106,15 +102,13 @@ $conn->close();
         }
 
         .dropbtn:hover {
-            background-color: #1e8e3e;
-            /* Verde escuro */
+            background-color: #1e8e3e; /* Verde escuro */
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #51df2d;
-            /* Fundo escuro */
+            background-color: #51df2d; /* Fundo escuro */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             min-width: 160px;
@@ -155,19 +149,16 @@ $conn->close();
         }
 
         .modal-content {
-            background-color: #121212;
-            /* Fundo escuro */
+            background-color: #121212; /* Fundo escuro */
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #333;
             width: 80%;
-            color: #e0e0e0;
-            /* Texto claro */
+            color: #e0e0e0; /* Texto claro */
         }
 
         .close {
-            color: #e0e0e0;
-            /* Texto claro */
+            color: #e0e0e0; /* Texto claro */
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -175,8 +166,7 @@ $conn->close();
 
         .close:hover,
         .close:focus {
-            color: #ffffff;
-            /* Texto branco */
+            color: #ffffff; /* Texto branco */
             text-decoration: none;
             cursor: pointer;
         }
@@ -198,17 +188,14 @@ $conn->close();
         }
 
         .cookie-consent-banner a {
-            color: #32CD32;
-            /* Verde fresco */
+            color: #32CD32; /* Verde fresco */
             text-decoration: underline;
         }
 
         .cookie-consent-banner button {
-            background-color: #32CD32;
-            /* Verde fresco */
+            background-color: #32CD32; /* Verde fresco */
             border: none;
-            color: #121212;
-            /* Fundo preto */
+            color: #121212; /* Fundo preto */
             padding: 10px 20px;
             cursor: pointer;
             margin-top: 10px;
@@ -222,8 +209,7 @@ $conn->close();
             padding-left: 80px;
             border-radius: 8px;
             margin-top: 130px;
-            color: #e0e0e0;
-            /* Texto claro */
+            color: #e0e0e0; /* Texto claro */
         }
 
         .vad {
@@ -249,8 +235,7 @@ $conn->close();
             flex: 1;
             margin-right: 6px;
             margin: 0;
-            color: #e0e0e0;
-            /* Texto claro */
+            color: #e0e0e0; /* Texto claro */
         }
 
         .services {
@@ -259,20 +244,17 @@ $conn->close();
         }
 
         .services h2 {
-            color: #e0e0e0;
-            /* Texto claro */
+            color: #e0e0e0; /* Texto claro */
             margin-bottom: 30px;
         }
 
         .service-card {
-            background-color: #1f1f1f;
-            /* Fundo escuro */
+            background-color: #1f1f1f; /* Fundo escuro */
             padding: 20px;
             margin: 10px;
             border-radius: 8px;
             border: 1px solid #333;
-            color: #e0e0e0;
-            /* Texto claro */
+            color: #e0e0e0; /* Texto claro */
         }
 
         .service-card h3 {
@@ -284,55 +266,15 @@ $conn->close();
         }
 
         .service-card .btn {
-            background-color: #32CD32;
-            /* Verde fresco */
-            color: #121212;
-            /* Fundo preto */
+            background-color: #32CD32; /* Verde fresco */
+            color: #121212; /* Fundo preto */
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
         }
 
         .service-card .btn:hover {
-            background-color: #1e8e3e;
-            /* Verde escuro */
-        }
-
-        h3 {
-            color: #32CD32 !important;
-        }
-
-        .modal02 {
-            display: none;
-            /* Oculto por padrão */
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Conteúdo do modal */
-        .modal002 {
-            background-color: #000000;
-            padding: 20px;
-            border-radius: 10px;
-            width: 400px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            text-align: center;
-        }
-
-        /* Estilo do botão de fechar */
-        .close02 {
-            position: absolute;
-            right: 20px;
-            top: 10px;
-            font-size: 28px;
-            cursor: pointer;
+            background-color: #1e8e3e; /* Verde escuro */
         }
     </style>
 
@@ -388,69 +330,23 @@ $conn->close();
         <div class="service-card">
             <h3>Ações</h3>
             <p>Investir em ações de empresas com bom histórico e potencial de crescimento pode resultar em grandes retornos. Considere diversificar entre setores e empresas.</p>
-            <a href="#" class="btn" id="saibaMaisBtn">Saiba mais</a>
+            <!-- <a href="#" class="btn">Saiba mais</a> -->
         </div>
-        <!-- /.service-card -->
-        <div id="modal02" class="modal02">
-            <div class="modal002">
-                <span class="close02">&times;</span>
-                <h3>Mais Informações</h3>
-                <p>Tipos de Ações:
-
-                <li>Ordinárias (ON): Direito a voto e participação nos lucros da empresa.</li>
-                <li>Preferenciais (PN): Prioridade nos dividendos, mas sem direito a voto.</li>
-                <h1>Como Escolher:</h1>
-
-                <li>Analise a empresa: Resultados financeiros, setor, plano de negócios.</li>
-                <li>Seu perfil: Conservador, moderado ou agressivo?</li>
-                <li>Diversifique: Não coloque todos os ovos em uma cesta.</li>
-                <li>Use ferramentas: Gráficos, indicadores, notícias, Nossas video aulas.</p>
-                </li>
-            </div>
-        </div>
-        <!-- /.ssssss -->
         <div class="service-card">
             <h3>Fundos Imobiliários (FIIs)</h3>
             <p> Esses fundos permitem investir em imóveis comerciais e residenciais sem precisar comprá-los diretamente, oferecendo renda passiva e potencial valorização.</p>
-            <a href="#" class="btn" id="saibaMaisBtn">Saiba mais</a>
+            <!-- <a href="#" class="btn">Saiba mais</a> -->
         </div>
-        <!-- /.service-card -->
-        <div id="modal02" class="modal02">
-            <div class="modal002">
-                <span class="close02">&times;</span>
-                <h3>Mais Informações</h3>
-                <p>Aqui estão mais detalhes sobre o conteúdo. Você pode adicionar mais informações conforme necessário.</p>
-            </div>
-        </div>
-        <!-- /.ssssss -->
         <div class="service-card">
             <h3>Fundos de Índice (ETFs)</h3>
             <p>ETFs acompanham índices de mercado, oferecendo uma forma diversificada de investir em ações, títulos e outros ativos.</p>
-            <a href="#" class="btn" id="saibaMaisBtn">Saiba mais</a>
+            <!-- <a href="#" class="btn">Saiba mais</a> -->
         </div>
-        <!-- /.service-card -->
-        <div id="modal02" class="modal02">
-            <div class="modal002">
-                <span class="close02">&times;</span>
-                <h3>Mais Informações</h3>
-                <p>Aqui estão mais detalhes sobre o conteúdo. Você pode adicionar mais informações conforme necessário.</p>
-            </div>
-        </div>
-        <!-- /.ssssss -->
         <div class="service-card">
             <h3>Títulos de Renda Fixa</h3>
-            <p> Investir em títulos como Tesouro Direto, CDBs e Debêntures pode proporcionar uma renda fixa e previsível com menor risco.</p>
-            <a href="#" class="btn" id="saibaMaisBtn">Saiba mais</a>
+            <p>  Investir em títulos como Tesouro Direto, CDBs e Debêntures pode proporcionar uma renda fixa e previsível com menor risco.</p>
+            <!-- <a href="#" class="btn">Saiba mais</a> -->
         </div>
-        <!-- /.service-card -->
-        <div id="modal02" class="modal02">
-            <div class="modal002">
-                <span class="close02">&times;</span>
-                <h3>Mais Informações</h3>
-                <p>Aqui estão mais detalhes sobre o conteúdo. Você pode adicionar mais informações conforme necessário.</p>
-            </div>
-        </div>
-        <!-- /.ssssss -->
         <!-- Adicione mais cards conforme necessário -->
     </div>
 
@@ -461,28 +357,6 @@ $conn->close();
     </div> -->
 
     <script>
-        // Obtém os elementos do DOM
-        var modal = document.getElementById("modal02");
-        var btn = document.getElementById("saibaMaisBtn");
-        var closeBtn = document.getElementsByClassName("close02")[0];
-
-        // Quando o usuário clica no botão "Saiba mais", o modal é exibido
-        btn.onclick = function() {
-            modal.style.display = "flex";
-        }
-
-        // Quando o usuário clica no "x", o modal é fechado
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // Quando o usuário clica fora do modal, ele também é fechado
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
         // Função para abrir/fechar o dropdown
         function toggleDropdown() {
             var dropdownContent = document.getElementById("dropdownContent");
@@ -522,10 +396,10 @@ $conn->close();
 
 
         // Verifique se o perfil está completo
-
+     
         // Execute a função quando a página carregar
         window.onload = checkProfileCompletion;
-
+        
         const textElement = document.getElementById('typing-text');
         const text = "";
         let index = 0;
@@ -539,6 +413,7 @@ $conn->close();
         }
 
         typeText();
+    
     </script>
 </body>
 

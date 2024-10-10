@@ -47,7 +47,7 @@ if (isset($_SESSION['id'])) {
         }
     </script>
     <style>
-  body {
+        body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -207,7 +207,7 @@ if (isset($_SESSION['id'])) {
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #51df2d;
+            background-color: ##51df2d;
             min-width: 160px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             border-radius: 5px;
@@ -529,8 +529,8 @@ if (isset($_SESSION['id'])) {
             border-radius: 10px;
             margin-top: 20px;
         }
-        /* $green: #1ECD97;
-        $gray: #bbbbbb; */
+        $green: #1ECD97;
+        $gray: #bbbbbb;
         * {
         font-family: 'Roboto', sans-serif;
         }
@@ -551,21 +551,22 @@ if (isset($_SESSION['id'])) {
         width: 130px;
         border-radius:40px;
         background: #fff;
-        border: 2px solid green;
-        color: green;
+        border: 2px solid $green;
+        color:$green;
         letter-spacing:1px;
         text-shadow:0;
-        font-size:12px;
-        weight:bold;
+        font:{
+            size:12px;
+            weight:bold;
+        }
         cursor: pointer;
         transition: all 0.25s ease;
-        
         &:hover {
             color:white;
-            background: green;
+            background: $green;
         }
         &:active {
-            /* //letter-spacing: 2px; */
+            //letter-spacing: 2px;
             letter-spacing: 2px ;
         }
         &:after {
@@ -574,10 +575,10 @@ if (isset($_SESSION['id'])) {
         }
         .onclic {
         width: 40px;
-        border-color:gray;
+        border-color:$gray;
         border-width:3px;
         font-size:0;
-        border-left-color:green;
+        border-left-color:$green;
         animation: rotating 2s 0.25s linear infinite;
 
         &:after {
@@ -591,7 +592,7 @@ if (isset($_SESSION['id'])) {
         .validate {
         font-size:13px;
         color: white;
-        background: green;
+        background: $green;
         &:after {
             font-family:'FontAwesome';
             content:"\f00c";
