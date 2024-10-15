@@ -156,16 +156,7 @@ if (isset($_SESSION['id'])) {
         .navbar a.active {
             border-bottom: 2px solid #51df2d;
         }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #51df2d;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            z-index: 1;
-            padding: 10px 0;
-        }
+        
 
         .dropdown-content a {
             color: #f5f5f5;
@@ -204,16 +195,7 @@ if (isset($_SESSION['id'])) {
             background-color: #3e8e41;
         }
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: ##51df2d;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            border-radius: 5px;
-            z-index: 1;
-            padding: 10px 0;
-        }
+        
 
         .dropdown-content a {
             color: #f5f5f5;
@@ -607,6 +589,93 @@ if (isset($_SESSION['id'])) {
             transform: rotate(360deg);
         }
         }
+        .app{
+            background-color: #fff;
+            width: 90%;
+            max-width: 600px;
+            margin: 100px auto 0;
+            border-radius: 10px;
+            padding: 30px;
+
+        }
+        .app h1{
+            font-weight: 25px;
+            color: #001e4d;
+            font-weight: 600;
+            border-bottom: 1px solid #333;
+            padding-bottom: 30px;
+        }
+        .quiz{
+            padding: 20px 0;
+
+        }
+        .quiz h2{
+            font-size: 18px;
+            color: #001e4d;
+            font-weight: 600;
+        }
+        .bnt{
+            background: #fff;
+            color: #222;
+            font-weight: 500;
+            width: 100%;
+            border: 1px solid #222;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: left;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .bnt:hover{
+            background: #222;
+            color: #fff;
+
+        }
+        #next-bnt{
+            background: #001e4d;
+            color: #fff;
+            font-weight: 500;
+            width: 150px;
+            border: 0;
+            padding: 10px;
+            margin: 20px auto 0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .bnt {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            border: 2px solid lightgray; /* Cor inicial da borda */
+            background-color: lightgray; /* Cor sólida, sem transparência */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .bnt.correct {
+            border-color: green; /* Borda verde 100% */
+            background-color: rgba(0, 128, 0, 0.45); /* Fundo verde com 45% de opacidade */
+            color: white;
+        }
+
+        .bnt.wrong {
+            border-color: red; /* Borda vermelha 100% */
+            background-color: rgba(255, 0, 0, 0.45); /* Fundo vermelho com 45% de opacidade */
+            color: white;
+        }
+
+        .bnt.disabled {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Para o estado "neutro" (antes de responder), botões com cores sólidas */
+        .bnt.middle {
+            background-color: lightgray; /* Cor sólida, sem transparência */
+            border-color: lightgray;
+            color: black;
+        }
+
+
     </style>
 </head>
 
@@ -662,7 +731,7 @@ if (isset($_SESSION['id'])) {
                     } else {
                         
                     }
-                    $sql = "SELECT * FROM capitulo_um WHERE id = 1";
+                    $sql = "SELECT * FROM video WHERE id = 1";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -676,8 +745,8 @@ if (isset($_SESSION['id'])) {
                             // Não usar <a href> para evitar redirecionamento
                             
                             echo '<div class="video-item2">';
-                            echo '<img src="' . $thumbnailUrl . '" alt="' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '">';
-                            echo '<button class="button-85" role="button" type="submit" name="set_per" value="1" onclick="loadVideo(\'' . $videoId . '\')">' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '</button>';
+                            echo '<img src="' . $thumbnailUrl . '" alt="' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '">';
+                            echo '<button class="button-85" role="button" type="submit" name="set_per" value="1" onclick="loadQuestion(1);loadVideo(\'' . $videoId . '\')">' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '</button>';
                             echo '</div>';
                         }
                         echo '</div>';
@@ -686,41 +755,7 @@ if (isset($_SESSION['id'])) {
                     }
                     ?>
                 </div>
-                <div id="perguntas" class="perguntas-container">
-                <?php 
-                // Puxar a pergunta e alternativas do banco de dados
-                $sql = "SELECT pergunta, resposta, alternativa_errada1, alternativa_errada2, alternativa_errada3 FROM capitulo_um WHERE id = ?";
-                $stmt = $conn->prepare($sql);
-                 // Definir o ID correto do capítulo
-                $stmt->bind_param("i", $capitulo_id);
-                $stmt->execute();
-                $result = $stmt->get_result();
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<h2 style="font-size: 28px; margin-bottom: 20px; color: #e0e0e0; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">' . htmlspecialchars($row['pergunta'], ENT_QUOTES, 'UTF-8') . '</h2>';
-
-                        $options = [
-                            ['value' => '1', 'text' => htmlspecialchars($row['resposta'], ENT_QUOTES, 'UTF-8')],
-                            ['value' => '2', 'text' => htmlspecialchars($row['alternativa_errada1'], ENT_QUOTES, 'UTF-8')],
-                            ['value' => '3', 'text' => htmlspecialchars($row['alternativa_errada2'], ENT_QUOTES, 'UTF-8')],
-                            ['value' => '4', 'text' => htmlspecialchars($row['alternativa_errada3'], ENT_QUOTES, 'UTF-8')]
-                        ];
-
-                        foreach ($options as $option) {
-                            echo '<div style="margin-bottom: 15px; display: flex; align-items: center; background: linear-gradient(145deg, #333, #444); border-radius: 12px; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); padding: 10px; transition: background 0.3s, box-shadow 0.3s;">';
-                            echo '<input type="radio" name="answer" value="' . $option['value'] . '" id="option' . $option['value'] . '" style="margin-right: 10px; accent-color: #4CAF50; transform: scale(1.2);">';
-                            echo '<label for="option' . $option['value'] . '" style="font-size: 18px; color: #e0e0e0; transition: color 0.3s;">' . $option['text'] . '</label>';
-                            echo '</div>';
-                        }
-
-                        echo '<button onclick="checkAnswer()" style="padding: 12px 24px; border-radius: 8px; background: linear-gradient(145deg, #4CAF50, #388E3C); color: white; border: none; cursor: pointer; font-size: 18px; font-weight: bold; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); transition: background 0.3s, box-shadow 0.3s;">Enviar Resposta</button>';
-                    }
-                } else {
-                    echo 'Nenhuma pergunta disponível para este vídeo.';
-                }
-                ?>
-            </div>
+                
             </div>
             <div class="dropdownvideo">
                 <form method="post" action="">
@@ -751,7 +786,7 @@ if (isset($_SESSION['id'])) {
                             // Não usar <a href> para evitar redirecionamento
                             echo '<div class="video-item2">';
                             echo '<img src="' . $thumbnailUrl . '" alt="' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '">';
-                            echo '<button class="button-85" role="button" onclick="loadVideo(\'' . $videoId . '\')">' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '</button>';
+                            echo '<button class="button-85" role="button" onclick="loadQuestion(2);loadVideo(\'' . $videoId . '\')">' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '</button>';
                             echo '</div>';
                         }
                         echo '</div>';
@@ -806,47 +841,103 @@ if (isset($_SESSION['id'])) {
                 <!-- O vídeo será carregado aqui -->
                 <iframe id="videoPlayer" width="850" height="500" src="" frameborder="0" allowfullscreen></iframe>
             </div>
-
-            <div id="questionsContainer" style="display: none;">
-                <?php 
-                // Puxar a pergunta e alternativas do banco de dados
-                $sql = "SELECT pergunta, resposta, alternativa_errada1, alternativa_errada2, alternativa_errada3 FROM capitulo_um WHERE id = ?";
-                $stmt = $conn->prepare($sql);
-                // Definir o ID correto do capítulo
-                $stmt->bind_param("i", $capitulo_id);
-                $stmt->execute();
-                $result = $stmt->get_result();
-
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '<h2 style="font-size: 28px; margin-bottom: 20px; color: #e0e0e0; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">' . htmlspecialchars($row['pergunta'], ENT_QUOTES, 'UTF-8') . '</h2>';
-                
-                        // Opções de resposta
-                        $options = [
-                            ['value' => '1', 'text' => htmlspecialchars($row['resposta'], ENT_QUOTES, 'UTF-8')],
-                            ['value' => '2', 'text' => htmlspecialchars($row['alternativa_errada1'], ENT_QUOTES, 'UTF-8')],
-                            ['value' => '3', 'text' => htmlspecialchars($row['alternativa_errada2'], ENT_QUOTES, 'UTF-8')],
-                            ['value' => '4', 'text' => htmlspecialchars($row['alternativa_errada3'], ENT_QUOTES, 'UTF-8')]
-                        ];
-                
-                        foreach ($options as $option) {
-                            echo '<div style="margin-bottom: 15px; display: flex; align-items: center; background: linear-gradient(145deg, #333, #444); border-radius: 12px; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); padding: 10px; transition: background 0.3s, box-shadow 0.3s;">';
-                            echo '<input type="radio" name="answer" value="' . $option['value'] . '" id="option' . $option['value'] . '" style="margin-right: 10px; accent-color: #4CAF50; transform: scale(1.2);">';
-                            echo '<label for="option' . $option['value'] . '" style="font-size: 18px; color: #e0e0e0; transition: color 0.3s;">' . $option['text'] . '</label>';
-                            echo '</div>';
-                        }
-                
-                        echo '<button onclick="checkAnswer()" style="padding: 12px 24px; border-radius: 8px; background: linear-gradient(145deg, #4CAF50, #388E3C); color: white; border: none; cursor: pointer; font-size: 18px; font-weight: bold; box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); transition: background 0.3s, box-shadow 0.3s;">Enviar Resposta</button>';
-                    }
-                } else {
-                    echo 'Nenhuma pergunta disponível para este vídeo.';
-                }
-                ?>
+            
+            
+            <div class="app">
+                <h1>Questionário</h1>
+                <div class="quiz">
+                    <div>
+                        
+                    </div>
+                    <h2 id="question"></h2>
+                    <div class="answer-buttons">
+                        <button class="bnt" id="answer1"></button>
+                        <button class="bnt" id="answer2"></button>
+                        <button class="bnt" id="answer3"></button>
+                        <button class="bnt" id="answer4"></button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
     <script>
+        // Função para carregar a pergunta via AJAX
+    
+        function loadQuestion(id) {
+            fetch('questionario.php?id=' + id)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        document.getElementById('question').innerText = data.error;
+                    } else {
+                        // Exibe a pergunta e as respostas
+                        document.getElementById('question').style.display = 'block';
+                        document.querySelector('.answer-buttons').style.display = 'block';
+
+                        document.getElementById('question').innerText = data.pergunta;
+                        document.getElementById('answer1').innerText = data.resposta1;
+                        document.getElementById('answer2').innerText = data.resposta2;
+                        document.getElementById('answer3').innerText = data.resposta3;
+                        document.getElementById('answer4').innerText = data.resposta4;
+
+                        // Remove as classes corretas e erradas dos botões
+                        resetButtons();
+
+                        // Adiciona o estado "middle" para suavizar as cores enquanto aguardamos uma resposta
+                        document.querySelectorAll('.bnt').forEach(button => {
+                            button.classList.add('middle');
+                        });
+
+                        // Verificação de resposta correta
+                        document.getElementById('answer1').onclick = function() { checkAnswer(this, data.resposta1, data.respostacorreta); };
+                        document.getElementById('answer2').onclick = function() { checkAnswer(this, data.resposta2, data.respostacorreta); };
+                        document.getElementById('answer3').onclick = function() { checkAnswer(this, data.resposta3, data.respostacorreta); };
+                        document.getElementById('answer4').onclick = function() { checkAnswer(this, data.resposta4, data.respostacorreta); };
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('question').innerText = "Erro ao carregar a pergunta: " + error;
+                });
+        }
+
+        // Função para verificar se a resposta está correta
+        function checkAnswer(selectedButton, selectedAnswer, correctAnswer) {
+            // Remove o estado "middle" para aplicar a cor definitiva
+            document.querySelectorAll('.bnt').forEach(button => {
+                button.classList.remove('middle');
+            });
+
+            // Desabilita todos os botões após a resposta
+            disableButtons();
+
+            // Verifica se a resposta é correta
+            if (selectedAnswer === correctAnswer) {
+                selectedButton.classList.add('correct');
+            } else {
+                selectedButton.classList.add('wrong');
+                // Mostra o botão com a resposta correta em verde
+                document.querySelectorAll('.bnt').forEach(button => {
+                    if (button.innerText === correctAnswer) {
+                        button.classList.add('correct');
+                    }
+                });
+            }
+        }
+
+        // Função para desabilitar todos os botões após a escolha
+        function disableButtons() {
+            document.querySelectorAll('.bnt').forEach(button => {
+                button.classList.add('disabled');
+            });
+        }
+
+        // Função para resetar os botões (remover classes corretas/incorretas e reativar)
+        function resetButtons() {
+            document.querySelectorAll('.bnt').forEach(button => {
+                button.classList.remove('correct', 'wrong', 'disabled', 'middle');
+            });
+        }
+
+
         function toggleDropdown() {
             document.getElementById("dropdownContent").classList.toggle("show");
         }
@@ -881,23 +972,7 @@ if (isset($_SESSION['id'])) {
         }
 
 
-        function checkAnswer() {
-            var options = document.getElementsByName('answer');
-            var selectedOption = null;
-
-            for (var i = 0; i < options.length; i++) {
-                if (options[i].checked) {
-                    selectedOption = options[i].value;
-                    break;
-                }
-            }
-
-            if (selectedOption === "1") {
-                alert('Resposta correta!');
-            } else {
-                alert('Resposta incorreta, tente novamente.');
-            }
-        }
+        
         $(function() {
         $( "#rest" ).click(function() {
             $( "#rest" ).addClass( "onclic", 250, validate);
@@ -970,6 +1045,7 @@ if (isset($_SESSION['id'])) {
         }
 
         typeText();
+        
     </script>
 </body>
 

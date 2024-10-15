@@ -108,10 +108,10 @@ $conn->close();
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #51df2d; /* Fundo escuro */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            background-color: #333;
             min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
             z-index: 1;
             padding: 10px 0;
         }
@@ -125,7 +125,7 @@ $conn->close();
         }
 
         .dropdown-content a:hover {
-            background-color: #333;
+            background-color: #555;
         }
 
         .dropdown:hover .dropdown-content {
