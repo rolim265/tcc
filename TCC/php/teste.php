@@ -1,19 +1,6 @@
 <?php
 include('conexao.php');
-
-// Iniciar sessão no topo da página
-session_start();
-
-// Verificar se a variável de sessão está definida e o usuário está logado
-if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-    $nome = $_SESSION['nome'];
-    $email = $_SESSION['email'];
-} else {
-    // Se o usuário não estiver logado, redirecione para a página de login
-    header("Location: login.php");
-    exit;
-}
+include('menu.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -56,122 +43,7 @@ if (isset($_SESSION['id'])) {
             width: 100%;
             max-width: 100vw;
         }
-        .navbar{
-            display: flex;
-
-        }
-        .navbar a{
-            color: var(--text-color);
-            font-size: 1.1rem;
-            font-weight: 500;
-            padding: 5px 0;
-            margin: 0px 30px;
-            transition: all .50s ease;
-
-        }
-        .navbar a:hover{
-            color: var(--main-color);
-
-        }
-        @media (max-width: 1280px){
-            header{
-                padding: 14px 2%;
-                transition: .2s;
-
-            }
-            .navbar a{
-                padding: 5px 0;
-                margin: 0px 20px;
-            }
-        }
-        @media (max-width: 1090px){
-            #menu-icon{
-                display: block;
-            }
-            .navbar{
-                
-
-
-            }
-            .navbar a{
-                display: block;
-                margin: 12px 0;
-                padding: 0px 25px;
-                transition: all .50s ease;
-                
-                
-            }
-            .navbar a:houver{
-                color: var(--text-color);
-                transform: translateY(5px);
-
-            }
-            .navbar a.active{
-                color: var(--text-color);
-
-            }
-            .navbar.open{
-                right: 2%;
-            }
-
-        }
-
-
-        header {
-            max-height: 45px;
-            max-width: 100vw;
-            top: 0;
-            right: 0;
-            z-index: 1000 ;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #000000;
-            padding: 28px 12%;
-            transition: all .50s ease;
         
-        }
-
-        .logo img {
-            height: 50px;
-        }
-
-        .navbar {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-
-        .navbar li {
-            margin: 0 15px;
-        }
-
-        .navbar a {
-            color: #f5f5f5;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .navbar a.active {
-            border-bottom: 2px solid #51df2d;
-        }
-        
-
-        .dropdown-content a {
-            color: #f5f5f5;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #555;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
 
         .dropdownvideo {
             position: relative;
@@ -250,7 +122,7 @@ if (isset($_SESSION['id'])) {
         }
 
         .modal-content {
-            background-color: #fefefe;
+
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
@@ -293,10 +165,7 @@ if (isset($_SESSION['id'])) {
             border-radius: 10px;
         }
 
-        .header {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
+
 
         .progress {
             background-color: #555;
@@ -680,33 +549,7 @@ if (isset($_SESSION['id'])) {
 </head>
 
 <body>
-    <header>
-        <a href="#" class="logo"><span><img src="../img/logocoffe.png" alt="" style="height: 65px;"></span></a>
-        <ul class="navbar">
-            <li><a href="../php/aaa.php" >Início</a></li>
-            <li><a href="../html/sobre.html">Sobre</a></li>
-            <li><a href="aulas.php" class="active">Vídeos Aulas</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
-        <div class="dropdown">
-            <button onclick="toggleDropdown()" class="dropbtn"><?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?></button>
-            <div id="dropdownContent" class="dropdown-content">
-                <a id="editBtn">Editar</a>
-                <a href="#">Email: <?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?></a>
-                <hr />
-                <a href="logout.php" class="user"><i class="ri-user-fill"></i>Log out</a>
-            </div>
-        </div>
 
-        <!-- Modal de Edição -->
-        <div id="editModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Editar Perfil</h2>
-                <div id="modal-body"></div>
-            </div>
-        </div>
-    </header>
 
     <div class="container">
         <div class="sidebar">
@@ -772,7 +615,7 @@ if (isset($_SESSION['id'])) {
                     } else {
                         
                     }
-                    $sql = "SELECT * FROM capitulo_um WHERE id = 2";
+                    $sql = "SELECT * FROM video WHERE id = 2";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
@@ -784,9 +627,10 @@ if (isset($_SESSION['id'])) {
                             $thumbnailUrl = $videoId ? 'https://img.youtube.com/vi/' . $videoId . '/hqdefault.jpg' : '../img/default-thumbnail.jpg';
 
                             // Não usar <a href> para evitar redirecionamento
+                            
                             echo '<div class="video-item2">';
-                            echo '<img src="' . $thumbnailUrl . '" alt="' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '">';
-                            echo '<button class="button-85" role="button" onclick="loadQuestion(2);loadVideo(\'' . $videoId . '\')">' . htmlspecialchars($row["nome"], ENT_QUOTES, 'UTF-8') . '</button>';
+                            echo '<img src="' . $thumbnailUrl . '" alt="' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '">';
+                            echo '<button class="button-85" role="button" type="submit" name="set_per" value="1" onclick="loadQuestion(2);loadVideo(\'' . $videoId . '\')">' . htmlspecialchars($row["titulo"], ENT_QUOTES, 'UTF-8') . '</button>';
                             echo '</div>';
                         }
                         echo '</div>';

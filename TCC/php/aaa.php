@@ -1,21 +1,9 @@
 <?php
 include('conexao.php');
+include('menu.php');
 
 // Iniciar sessão no topo da página
-session_start();
 
-// Verificar se a variável de sessão está definida e o usuário está logado
-if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-    $nome = $_SESSION['nome'];
-    $email = $_SESSION['email'];
-
-    // Aqui você pode usar $id_usuario para realizar consultas ou exibições específicas do usuário
-} else {
-    // Se o usuário não estiver logado, redirecione para a página de login
-    header("Location: login.php");
-    exit;
-}
 
 // Fechar conexão com o banco de dados
 $conn->close();
@@ -45,6 +33,7 @@ $conn->close();
             color: #e0e0e0; /* Texto claro */
             line-height: 1.6;
         }
+        
 
         header {
  /* Fundo do cabeçalho escuro */
@@ -77,6 +66,11 @@ $conn->close();
         .navbar a {
             color: #e0e0e0;
             text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+
+            transition: all .50s ease;
         }
 
         .navbar a.active {
@@ -282,34 +276,7 @@ $conn->close();
 
 <body>
 
-    <header>
-        <a href="#" class="logo"><span><img src="../img/logocoffe.png" alt="" style="height: 65px;"></span></a>
-        <ul class="navbar">
-            <li><a href="../php/aaa.php" class="active">Inicio</a></li>
-            <li><a href="../html/sobre.html">Sobre</a></li>
-            <li><a href="../php/teste.php">Vídeos Aulas</a></li>
-            <li><a href="#">Contato</a></li>
-        </ul>
 
-        <div class="dropdown">
-            <button onclick="toggleDropdown()" class="dropbtn"><?php echo $nome; ?></button>
-            <div id="dropdownContent" class="dropdown-content">
-                <a id="editBtn">Editar</a>
-                <a href="#">Email: <?php echo $email; ?></a>
-                <hr />
-                <a href="logout.php" class="user"><i class="ri-user-fill"></i>Log out</a>
-            </div>
-        </div>
-
-        <!-- O Modal de Edição -->
-        <div id="editModal" class="modal">
-            <div class="modal-content">
-                <span style="color:red" class="close">&times;</span>
-                <h2 style="color: black;">Editar Perfil</h2>
-                <div id="modal-body"></div>
-            </div>
-        </div>
-    </header>
 
     <!-- Início dos textos -->
     <div class="ola">
