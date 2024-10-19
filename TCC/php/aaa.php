@@ -29,19 +29,21 @@ $conn->close();
         /* Estilos gerais do corpo */
         body {
             font-family: Arial, sans-serif;
-            background-color: #2e2e2e; /* Fundo preto */
-            color: #e0e0e0; /* Texto claro */
+            background-color: #2e2e2e;
+            /* Fundo preto */
+            color: #e0e0e0;
+            /* Texto claro */
             line-height: 1.6;
         }
-        
+
 
         header {
- /* Fundo do cabeçalho escuro */
+            /* Fundo do cabeçalho escuro */
             max-height: 98px;
             max-width: 100vw;
             top: 0;
             right: 0;
-            z-index: 1000 ;
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -54,36 +56,15 @@ $conn->close();
             height: 65px;
         }
 
-        .navbar {
-            list-style: none;
-            display: flex;
-        }
-
-        .navbar li {
-            margin: 0 15px;
-        }
-
-        .navbar a {
-            color: #e0e0e0;
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 1.1rem;
-            font-weight: 500;
-
-            transition: all .50s ease;
-        }
-
-        .navbar a.active {
-            border-bottom: 2px solid #51df2d; /* Verde fresco */
-        }
-
+       
         .dropdown {
             position: relative;
             display: inline-block;
         }
 
         .dropbtn {
-            background-color: #32CD32; /* Verde fresco */
+            background-color: #32CD32;
+            /* Verde fresco */
             color: white;
             font-size: 0.9rem;
             font-weight: 500;
@@ -96,7 +77,8 @@ $conn->close();
         }
 
         .dropbtn:hover {
-            background-color: #1e8e3e; /* Verde escuro */
+            background-color: #1e8e3e;
+            /* Verde escuro */
         }
 
         .dropdown-content {
@@ -143,16 +125,19 @@ $conn->close();
         }
 
         .modal-content {
-            background-color: #121212; /* Fundo escuro */
+            background-color: #121212;
+            /* Fundo escuro */
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #333;
             width: 80%;
-            color: #e0e0e0; /* Texto claro */
+            color: #e0e0e0;
+            /* Texto claro */
         }
 
         .close {
-            color: #e0e0e0; /* Texto claro */
+            color: #e0e0e0;
+            /* Texto claro */
             float: right;
             font-size: 28px;
             font-weight: bold;
@@ -160,7 +145,8 @@ $conn->close();
 
         .close:hover,
         .close:focus {
-            color: #ffffff; /* Texto branco */
+            color: #ffffff;
+            /* Texto branco */
             text-decoration: none;
             cursor: pointer;
         }
@@ -182,14 +168,17 @@ $conn->close();
         }
 
         .cookie-consent-banner a {
-            color: #32CD32; /* Verde fresco */
+            color: #32CD32;
+            /* Verde fresco */
             text-decoration: underline;
         }
 
         .cookie-consent-banner button {
-            background-color: #32CD32; /* Verde fresco */
+            background-color: #32CD32;
+            /* Verde fresco */
             border: none;
-            color: #121212; /* Fundo preto */
+            color: #121212;
+            /* Fundo preto */
             padding: 10px 20px;
             cursor: pointer;
             margin-top: 10px;
@@ -203,7 +192,8 @@ $conn->close();
             padding-left: 80px;
             border-radius: 8px;
             margin-top: 130px;
-            color: #e0e0e0; /* Texto claro */
+            color: #e0e0e0;
+            /* Texto claro */
         }
 
         .vad {
@@ -229,7 +219,8 @@ $conn->close();
             flex: 1;
             margin-right: 6px;
             margin: 0;
-            color: #e0e0e0; /* Texto claro */
+            color: #e0e0e0;
+            /* Texto claro */
         }
 
         .services {
@@ -238,17 +229,20 @@ $conn->close();
         }
 
         .services h2 {
-            color: #e0e0e0; /* Texto claro */
+            color: #e0e0e0;
+            /* Texto claro */
             margin-bottom: 30px;
         }
 
         .service-card {
-            background-color: #1f1f1f; /* Fundo escuro */
+            background-color: #1f1f1f;
+            /* Fundo escuro */
             padding: 20px;
             margin: 10px;
             border-radius: 8px;
             border: 1px solid #333;
-            color: #e0e0e0; /* Texto claro */
+            color: #e0e0e0;
+            /* Texto claro */
         }
 
         .service-card h3 {
@@ -260,15 +254,88 @@ $conn->close();
         }
 
         .service-card .btn {
-            background-color: #32CD32; /* Verde fresco */
-            color: #121212; /* Fundo preto */
+            background-color: #32CD32;
+            /* Verde fresco */
+            color: #121212;
+            /* Fundo preto */
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
         }
 
         .service-card .btn:hover {
-            background-color: #1e8e3e; /* Verde escuro */
+            background-color: #1e8e3e;
+            /* Verde escuro */
+        }
+
+
+        /* Adicionar responsividade */
+        @media (max-width: 1200px) {
+            header {
+                padding: 20px 10%;
+            }
+
+          
+
+            .vad img {
+                max-width: 400px;
+            }
+
+            .service-card {
+                padding: 15px;
+                margin: 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                align-items: center;
+                padding: 15px 5%;
+            }
+
+
+            .vad {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .vad img {
+                max-width: 100%;
+                margin: 20px 0;
+            }
+
+            .services {
+                padding: 40px 10px;
+            }
+
+            .service-card {
+                margin: 10px 0;
+            }
+
+            .ola {
+                padding-left: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dropbtn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+
+            .service-card {
+                padding: 10px;
+            }
+
+            .vad img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .ola {
+                font-size: 1.2rem;
+            }
         }
     </style>
 
@@ -311,17 +378,11 @@ $conn->close();
         </div>
         <div class="service-card">
             <h3>Títulos de Renda Fixa</h3>
-            <p>  Investir em títulos como Tesouro Direto, CDBs e Debêntures pode proporcionar uma renda fixa e previsível com menor risco.</p>
+            <p> Investir em títulos como Tesouro Direto, CDBs e Debêntures pode proporcionar uma renda fixa e previsível com menor risco.</p>
             <!-- <a href="#" class="btn">Saiba mais</a> -->
         </div>
         <!-- Adicione mais cards conforme necessário -->
     </div>
-
-    <!-- Banner de Consentimento de Cookies
-    <div class="cookie-consent-banner" id="cookieConsentBanner">
-        <p>Este site usa cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="#">Política de Privacidade</a>.</p>
-        <button onclick="acceptCookies()">Aceitar</button>
-    </div> -->
 
     <script>
         // Função para abrir/fechar o dropdown
@@ -363,10 +424,10 @@ $conn->close();
 
 
         // Verifique se o perfil está completo
-     
+
         // Execute a função quando a página carregar
         window.onload = checkProfileCompletion;
-        
+
         const textElement = document.getElementById('typing-text');
         const text = "";
         let index = 0;
@@ -380,7 +441,6 @@ $conn->close();
         }
 
         typeText();
-    
     </script>
 </body>
 

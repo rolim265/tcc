@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="main-login">
         <div class="left-login">
             <h1>Faça seu login<br>E entre para o nosso time</h1>
-            <img src="img/astronauta.svg" class="left-login-img" alt="Animação em 2D de uma astronauta em um traje verde flutuando entre estrelas e luas">
+            <img src="../img/astronauta.svg" class="left-login-img" alt="Animação em 2D de uma astronauta em um traje verde flutuando entre estrelas e luas">
         </div>
         <div class="right-login">
             <div class="card-login">

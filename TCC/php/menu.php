@@ -13,7 +13,6 @@ if (isset($_SESSION['id'])) {
     header("Location: login.php");
     exit;
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +21,8 @@ if (isset($_SESSION['id'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<style>
-    * {
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -36,17 +34,15 @@ if (isset($_SESSION['id'])) {
             line-height: 1.6;
             min-height: 100vh;
         }
-        .navbar a:hover{
+        .navbar a:hover {
             color: #29fd53;
-
         }
-    header {
- /* Fundo do cabeçalho escuro */
+        header {
             max-height: 98px;
             max-width: 100vw;
             top: 0;
             right: 0;
-            z-index: 1000 ;
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -62,6 +58,7 @@ if (isset($_SESSION['id'])) {
         .navbar {
             list-style: none;
             display: flex;
+            flex-wrap: wrap; /* Adicionando flex-wrap para itens que não cabem na linha */
         }
 
         .navbar li {
@@ -94,9 +91,7 @@ if (isset($_SESSION['id'])) {
             display: flex;
             align-items: center;
         }
-        .navbar li {
-            margin: 0 15px;
-        }
+
         .dropbtn:hover {
             background-color: #1e8e3e; /* Verde escuro */
         }
@@ -128,9 +123,6 @@ if (isset($_SESSION['id'])) {
             display: block;
         }
 
-        .dropdown:hover .dropbtn {
-            background-color: #1e8e3e;
-        }
         .modal {
             display: none;
             position: fixed;
@@ -149,6 +141,7 @@ if (isset($_SESSION['id'])) {
             padding: 20px;
             border: 1px solid #333;
             width: 80%;
+            max-width: 600px; /* Largura máxima para o modal */
             color: #e0e0e0; /* Texto claro */
         }
 
@@ -166,90 +159,71 @@ if (isset($_SESSION['id'])) {
             cursor: pointer;
         }
 
-        #menu-icon{
+        #menu-icon {
             font-size: 35px;
-            color: var(--text-color);
+            color: #e0e0e0; /* Ajuste a cor */
             cursor: pointer;
             z-index: 10001;
-            display: none; 
-        }
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
+            display: none;
         }
 
-        @keyframes blink {
-            from, to {
-                border-color: transparent;
-            }
-            50% {
-                border-color: black;
-            }
-        }
-        @media (max-width: 1280px){
-            header{
+        @media (max-width: 1280px) {
+            header {
                 padding: 14px 2%;
                 transition: .2s;
-
             }
-            .navbar a{
+            .navbar a {
                 padding: 5px 0;
-                margin: 0px 20px;
+                margin: 0px 10px; /* Ajustando o espaçamento */
             }
         }
-        @media (max-width: 1090px){
-            #menu-icon{
+
+        @media (max-width: 1090px) {
+            #menu-icon {
                 display: block;
             }
-            .navbar{
-                position: absolute;
+            .navbar {
+                position: static;
                 top: 100%;
                 right: -100%;
-                width: 270px;
-                height: 20vh;
+                width: 80%; /* Largura ajustada */
+                 /*height: auto; Altura automática */
                 display: flex;
                 flex-direction: column;
                 border-radius: 10px;
                 transition: all .50s ease;
-
-
+                background-color: #000; /* Fundo do menu */
+                margin-top: auto;
             }
-            .navbar a{
+            .navbar a {
                 display: block;
                 margin: 12px 0;
-                padding: 0px 25px;
-                transition: all .50s ease;
-                
-                
+                padding: 10px; /* Aumentando o espaço ao redor */
+                text-align: center; /* Centralizando texto */
             }
-            .navbar a:houver{
-                color: var(--text-color);
-                transform: translateY(5px);
-
-            }
-            .navbar a.active{
-                color: var(--text-color);
-
-            }
-            .navbar.open{
+            .navbar.open {
                 right: 2%;
             }
-
         }
 
-</style>
+        @media (max-width: 600px) {
+            header {
+                padding: 10px 5%; /* Reduzindo o padding para telas pequenas */
+            }
+            .modal-content {
+                width: 90%; /* Largura do modal ajustada */
+            }
+        }
+    </style>
+</head>
 <body>
     <header>
         <a href="#" class="logo"><span><img src="../img/logocoffe.png" alt="" style="height: 65px;"></span></a>
         <ul class="navbar">
-            <li><a href="../php/aaa.php" >Início</a></li>
-            <li><a href="../html/sobre.html">Sobre</a></li>
-            <li><a href="teste.php" >Vídeos Aulas</a></li>
-            <li><a href="#">Contato</a></li>
+            <li><a href="../php/aaa.php">Início</a></li>
+            <li><a href="../html/sobre.php">Sobre</a></li>
+            <li><a href="aulas.php">Vídeos Aulas</a></li>
+            <li><a href="../php/contato.php">Contato</a></li>
         </ul>
         <div class="dropdown">
             <button onclick="toggleDropdown()" class="dropbtn"><?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?></button>
@@ -300,22 +274,6 @@ if (isset($_SESSION['id'])) {
                 document.getElementById('editModal').style.display = "none";
             }
         }
-        window.onload = checkProfileCompletion;
-        
-        const textElement = document.getElementById('typing-text');
-        const text = "";
-        let index = 0;
-
-        function typeText() {
-            if (index < text.length) {
-                textElement.textContent += text.charAt(index);
-                index++;
-                setTimeout(typeText, 100); // Ajuste o tempo para mais rápido ou mais lento
-            }
-        }
-
-        typeText();
     </script>
-    
 </body>
 </html>
