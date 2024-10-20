@@ -3,7 +3,7 @@ include('conexao.php');
 include('menu.php');
 
 // Iniciar sessão no topo da página
-session_start();
+
 
 // Verificar se a variável de sessão está definida e o usuário está logado
 if (isset($_SESSION['id'])) {
